@@ -9,8 +9,8 @@
 相互フォローしているユーザーとDM機能を使って直接やりとりをしたり、グループを作りグループ掲示板にてグループでのやりとりも可能です。ぜひそこで飼っている動物についての相談や飼いたい動物についての相談をしてみたり、好きな動物について語り合ってみたりしてください。
 ### サイトテーマ
 
-*動物好きの人の交流場所
-*疲れを癒す場所
+動物好きの人の交流場所
+- 疲れを癒す場所
 
 ### テーマを選んだ理由
 
@@ -19,19 +19,19 @@
 
 ### ターゲットユーザ
 
-*動物好きの人
-*癒しを求めてる人
-*SNS に疲れた人
+- 動物好きの人
+- 癒しを求めてる人
+- SNS に疲れた人
 
 ### 主な利用シーン
 
-*動物の写真を見て癒されたい時
-*時ペットについて投稿したい時
+- 動物の写真を見て癒されたい時
+- 時ペットについて投稿したい時
 
 ## 設計書
-*ER図： https://drive.google.com/file/d/1x8CR_XD4YubYYEtNWzSS_w0jPUuuFAmB/view?usp=sharing
-*テーブル定義書：https://drive.google.com/file/d/1du-FbltIRLTXyehZqPHYYsPGjOgb6Jh4/view?usp=sharing
-*画面設計書:https://drive.google.com/file/d/1rn60DjplbpB3Oaxi2ZwBe7vwYaNGpk4j/view?usp=sharing
+- ER図： https://drive.google.com/file/d/1x8CR_XD4YubYYEtNWzSS_w0jPUuuFAmB/view?usp=sharing
+- テーブル定義書：https://drive.google.com/file/d/1du-FbltIRLTXyehZqPHYYsPGjOgb6Jh4/view?usp=sharing
+- 画面設計書:https://drive.google.com/file/d/1rn60DjplbpB3Oaxi2ZwBe7vwYaNGpk4j/view?usp=sharing
 
 ## チャレンジ要素一覧
 
