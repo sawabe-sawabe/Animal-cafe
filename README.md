@@ -6,7 +6,7 @@
 ユーザー登録を行うと画像を投稿することができ、気になるワードで画像を検索したり、ジャンルで画像を検索することも可能です。ジャンルは新たに作ることも可能です。
 そして、お気に入りの投稿にはコメントやいいねをつけることができ、フォローしたいユーザーがいたらフォローすることが可能ですます。
 また、マイページにて自分が投稿した画像を確認したり、フォローフォロワーの確認、いいねした画像コメントした画像一覧ページへ遷移することが可能です。
-フォローユーザーDM機能を使って直接やりとりをしたり、グループを作りグループ掲示板にてグループでのやりとりも可能です。ぜひそこで飼っている動物についての相談や飼いたい動物についての相談をしてみたり、好きな動物について語り合ってみたりしてください。
+相互フォローしているユーザーとDM機能を使って直接やりとりをしたり、グループを作りグループ掲示板にてグループでのやりとりも可能です。ぜひそこで飼っている動物についての相談や飼いたい動物についての相談をしてみたり、好きな動物について語り合ってみたりしてください。
 ### サイトテーマ
 
 *動物好きの人の交流場所
@@ -25,12 +25,13 @@
 
 ### 主な利用シーン
 
-*動物の写真を見て癒されたい
+*動物の写真を見て癒されたい時
 *時ペットについて投稿したい時
 
 ## 設計書
-ER図： https://drive.google.com/file/d/1x8CR_XD4YubYYEtNWzSS_w0jPUuuFAmB/view?usp=sharing
-テーブル設計書：https://drive.google.com/file/d/1du-FbltIRLTXyehZqPHYYsPGjOgb6Jh4/view?usp=sharing
+*ER図： https://drive.google.com/file/d/1x8CR_XD4YubYYEtNWzSS_w0jPUuuFAmB/view?usp=sharing
+*テーブル定義書：https://drive.google.com/file/d/1du-FbltIRLTXyehZqPHYYsPGjOgb6Jh4/view?usp=sharing
+*画面設計書:https://drive.google.com/file/d/1rn60DjplbpB3Oaxi2ZwBe7vwYaNGpk4j/view?usp=sharing
 ## チャレンジ要素一覧
 
 https://docs.google.com/spreadsheets/d/1n0AsL-STiCRjkvx4Bwooew4PJtyIs1xAOIB-cvCkmgg/edit?usp=sharing
