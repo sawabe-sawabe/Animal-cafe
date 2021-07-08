@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   root'homes#top'
   get'about' =>'homes#show'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
    resources:favorites, only:[:create,:destroy,:index]
   end
 
-  resources :genres, only:[:index,:create,:edit,:update]
+  resources :genres, only:[:new,:create,:edit,:update]
 
   post'rooms' =>'rooms#create' #DM機能
   get'rooms/:id' =>'rooms#show' #DM機能
