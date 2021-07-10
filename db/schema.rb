@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_024701) do
+ActiveRecord::Schema.define(version: 2021_07_10_111751) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -18,17 +25,15 @@ ActiveRecord::Schema.define(version: 2021_07_08_024701) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_images", force: :cascade do |t|
+  create_table "post_comments", force: :cascade do |t|
+    t.text "comment"
     t.integer "user_id"
-    t.integer "genre_id"
-    t.text "image_id"
-    t.string "title"
-    t.text "caption"
+    t.integer "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "postimages", force: :cascade do |t|
+  create_table "post_images", force: :cascade do |t|
     t.integer "user_id"
     t.integer "genre_id"
     t.text "image_id"
@@ -44,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_024701) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.text "profile_image_url"
     t.string "having_pets"
     t.string "favorite_animal"
