@@ -1,0 +1,22 @@
+<h4>プロフィール編集</h4>
+ <%= form_with model:@user,local:true do |f| %>
+ <div>
+   <label>プロフィール写真</label>
+   <%= f.attachment_field :image %>
+ </div>
+ <div>
+   <label>好きな動物</label>
+   <%= f.text_field :favorite_animal, size: 30 %>
+ </div>
+ <div>
+   <label>飼っている動物</label>
+    <%= f.text_field :having_pets, size: 30 %>
+ </div>
+ <div>
+   <label>ひとこと</label>
+    <%= f.text_field :introduction, size: "30x5" %>
+ </div>
+ <div>
+   <%= f.submit "保存"  %>
+ </div>
+ <% end %>

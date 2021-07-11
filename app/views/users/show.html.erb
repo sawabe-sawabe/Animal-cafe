@@ -1,0 +1,75 @@
+<h4>マイページ</h4>
+<div>
+   <table>
+      <tr>
+        <td><%= attachment_image_tag @user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td>
+         <p> ユーザーネーム<%=@user.name %><p>
+         <p> フォロー<%= link_to " #{@user.followings.count}", followers_user_path(@user.id) %><p>
+         <p> フォロワー<%= link_to " #{@user.followers.count}", followings_user_path(@user.id) %><p>
+        </td>
+      </tr>
+      <tr>
+        <td>グループ</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>ひとこと</td>
+        <td><%=@user.introduction %></td>
+      </tr>
+      <tr>
+        <td>好きな動物</td>
+        <td><%=@user.favorite_animal %></td>
+      </tr>
+      <tr>
+        <td>飼っている動物</td>
+        <td><%=@user.having_pets %></td>
+      </tr>
+      <tr>
+        <td>お気に入り</td>
+        <td>
+           <%= link_to  user_favorites_path(@user.id)  do %>
+           <%= @user.favorites.count %>
+           <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>コメント</td>
+        <td><%= link_to "#{@post_comments.count} コメント",  user_post_comments_path(@user.id) %></td>
+      </tr>
+  <% unless @user == current_user %>
+    <%if current_user.following?(users)%>
+      <tr>
+        <%=link_to "フォローを外す",relationship_path(users),method: :delete%>
+      </tr>
+    <% else %>
+      <tr>
+        <%= link_to "フォローをする",relationships_path(:follow_id => @users.id ),method: :post%>
+      </tr>
+    <% end %>
+  <% end %>
+
+   </table>
+   <%= link_to "編集", edit_user_path(@user.id) %>
+ </div>
+<% @images.each do |post_image| %>
+<div>
+  <p><%= post_image.title %></p>
+  <%= attachment_image_tag post_image, :image,  size: "280x280" %> <%#refileを使用しているため%>
+  <p><%= post_image.user.name%></p>
+  <p><%= post_image.genre.name %></p>
+  <% if post_image.favorited_by?(current_user) %>
+    <p>
+
+        ♥<%= post_image.favorites.count %>
+
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_image_favorites_path(post_image), method: :post do %>
+        ♡<%= post_image.favorites.count %>
+      <% end %>
+    </p>
+  <%end%>
+    <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+<% end %>
