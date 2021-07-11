@@ -1,5 +1,5 @@
 <h2>Follower Users </h2>
-<% if @user.followers.exists? %>
+<% if @users.exists? %>
 
   <table class="table table-striped">
    <thead>
@@ -12,7 +12,7 @@
   </thead>
   <tbody>
 
-   <% @user.followers.each do |user| %>
+   <% @users.each do |user| %>
     <tr>
      <td>
       <%= attachment_image_tag user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %>
