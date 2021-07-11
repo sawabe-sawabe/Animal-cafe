@@ -1,0 +1,20 @@
+<h4>ユーザー一覧</h4>
+ <%  @users.each do |user| %>
+  <table>
+    <tr>
+      <td><%= attachment_image_tag user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %></td>
+      <td><%=user.name%></td>
+      <td><%= user.introduction%></td>
+      <td><%=link_to "show",user_path(user.id) %></td>
+  <% unless user == current_user %>
+   <%if current_user.following?(users)%>
+      <td> <%=link_to "フォローを外す",relationship_path(users),method: :delete %></td>
+   <% else %>
+      <td><%= link_to "フォローをする",relationships_path(:follow_id => user.id ),method: :post%></td>
+   <% end %>
+  <% end %>
+      </tr>
+    </tr>
+  </table>
+  <% end %>
+<%= paginate @users %>
