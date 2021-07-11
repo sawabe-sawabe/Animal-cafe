@@ -14,5 +14,8 @@ class FavoritesController < ApplicationController
    redirect_to post_image_path(post_image)
  end
 
+ def index
+   @user = User.find(params[:user_id])
+ end
 
 end
