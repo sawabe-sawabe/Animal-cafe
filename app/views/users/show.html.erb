@@ -5,8 +5,8 @@
         <td><%= attachment_image_tag @user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %></td>
         <td>
          <p> ユーザーネーム<%=@user.name %><p>
-         <p> フォロー<%= link_to " #{@user.followings.count}", followers_user_path(@user.id) %><p>
-         <p> フォロワー<%= link_to " #{@user.followers.count}", followings_user_path(@user.id) %><p>
+         <p> フォロー<%= link_to " #{@user.followings.count}", user_followings_path(@user.id) %><p>
+         <p> フォロワー<%= link_to " #{@user.followers.count}",  user_followers_path(@user.id) %><p>
         </td>
       </tr>
       <tr>
@@ -38,13 +38,13 @@
         <td><%= link_to "#{@post_comments.count} コメント",  user_post_comments_path(@user.id) %></td>
       </tr>
   <% unless @user == current_user %>
-    <%if current_user.following?(users)%>
+    <%if current_user.following?(@user)%>
       <tr>
-        <%=link_to "フォローを外す",relationship_path(users),method: :delete%>
+        <%=link_to "フォローを外す",user_relationships_path(@user.id),method: :delete%>
       </tr>
     <% else %>
       <tr>
-        <%= link_to "フォローをする",relationships_path(:follow_id => @users.id ),method: :post%>
+        <%= link_to "フォローをする",user_relationships_path(@user.id),method: :delete,method: :post%>
       </tr>
     <% end %>
   <% end %>
