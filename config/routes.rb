@@ -11,10 +11,9 @@ Rails.application.routes.draw do
   get'about' =>'homes#show'
 
   resources :users, only:[:show,:edit,:index,:update] do
-   member do
-      get :followings, :followers #フォローフォロワー一覧取得
-    end
-     resources :relationships, only:[:create,:destroy] #フォロー・フォロー解除
+   resource :relationships, only:[:create,:destroy] #フォロー・フォロー解除
+   get 'followings' => 'relationships#followings', as: 'followings'
+   get 'followers' => 'relationships#followers', as: 'followers' #フォローフォロワー一覧取得
    resources:favorites, only:[:index]
    resources:post_comments, only:[:index]
   end
