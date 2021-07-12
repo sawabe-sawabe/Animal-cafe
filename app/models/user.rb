@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :post_comments_images, through: :post_comments, source: :post_image
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロー取得
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロワー取得
-  has_many :followers, through: :reverse_of_relationships, source: :follower# 中間テーブルのfollowersを通り、Userモデルのfollowedインスタンスを取得するため
-  has_many :followings, through: :relationships, source: :followed # 中間テーブルのfollowingsを通り、Userモデルのfollowerインスタンスを取得するため
+  has_many :followers, through: :reverse_of_relationships, source: :follower# 中間テーブルのを通り、Userモデルのfollowedインスタンスを取得するため
+  has_many :followings, through: :relationships, source: :followed # 中間テーブルを通り、Userモデルのfollowerインスタンスを取得するため
   attachment :image
   def follow(user_id)
         relationships.create(followed_id: user_id)
