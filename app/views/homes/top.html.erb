@@ -14,19 +14,20 @@
       </div>
 
       <div class = "mx-auto col-6">
-        <div class = "menu">
-          <p class="text-center">
-            ようこそ！<br>
-            Animal-cafeへ<br>
-            気軽に動物好きな人同士が交流したり、動物の写真を投稿しあったり、<br>またそれを見て、疲れを癒やしたりできる場所を提供するサイトです。<br>
-          </p>
-          <p class="text-center"><%= link_to "about",about_path ,class: "btn btn-outline-secondary "%></p>
+        <div class = "menu ">
+          <h5 class="text-center pt-2">
+            ようこそ！
+          </h5>
+           <h4 class="text-center"> Animal-cafeへ</h4><br>
+           <p class="text-center"> 気軽に動物好きな人同士が交流したり、動物の写真を投稿しあったり、<br>それを見て疲れを癒やしたりできる場所を提供するサイトです。</p>
+
+          <p class="text-center pb-2"><%= link_to "about",about_path ,class: "btn btn-outline-secondary "%></p>
         </div>
-        <div class = "menu">
-          <p class="text-center">ゆっくりしていってください</p>
+        <div class = "menu mt-5">
+          <p class="text-center pt-2">ゆっくりしていってください</p>
           <p class="text-center"><%= link_to "ログイン", new_user_session_path ,class: "btn btn-outline-secondary "%></p>
-           <p class="text-center">ほっとひいきつきませんか？</p>
-          <p class="text-center"><%= link_to "新規登録", new_user_registration_path ,class: "btn btn-outline-secondary "%></p>
+           <p class="text-center">ほっとひといきつきませんか？</p>
+          <p class="text-center pb-2"><%= link_to "新規登録", new_user_registration_path ,class: "btn btn-outline-secondary "%></p>
         </div>
      </div>
 
