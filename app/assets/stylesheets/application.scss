@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+
+body{
+  background-image: url(cafe201261763_TP_V.jpeg);
+
+}
+.slide{
+  height: 700px;
+}
+.slide1{
+  height: 618px;
+}
+
+.image1 {
+  background-image: url(image1.jpeg);
+}
+.image2 {
+  background-image: url(image2.jpeg);
+}
+.image3 {
+  background-image: url(image3.jpeg);
+}
+.image4 {
+  background-image: url(image4.jpeg);
+}
+.image5 {
+  background-image: url(image5.jpeg);
+}
+
+.menu{
+  background-color: white;
+}
