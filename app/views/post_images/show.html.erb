@@ -9,35 +9,12 @@
   <p><%= @post_image.user.name %></p>
  <% if @post_image.user == current_user %>
     <p><%= link_to "削除", post_image_path(@post_image), method: :delete %></p>
-  <% end %>
-  <% if @post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_image_favorite_path(@post_image), method: :delete do %>
-        ♥<%= @post_image.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-        ♡<%= @post_image.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
+ <% end %>
+  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: @post_image %></p>
+
 </div>
-<div class="comments">
   <p>コメント件数:<%= @post_image.post_comments.count%></p>
-<% @post_image.post_comments.each do |post_comment| %>
-  <p>
-  <%= post_comment.created_at.strftime('%Y%m%d')%>
-  <%= post_comment.comment %>
-  </p>
-<% end %>
-  </div>
-  <div class="new-comment">
-  <%= form_with(model:[@post_image,@post_comment],local: true) do |f| %>
-  <p>
-  <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
-  <%= f.submit"送信する"%>
-  <% end %>
-  </p>
-  </div>
+<div class="comments">
+ <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>
+
+</div>
