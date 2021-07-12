@@ -10,11 +10,11 @@
  <% if @post_image.user == current_user %>
     <p><%= link_to "削除", post_image_path(@post_image), method: :delete %></p>
  <% end %>
-  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: @post_image %></p>
+  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: @post_image %></p>　<%#非同期通信化するため%>
 
 </div>
   <p>コメント件数:<%= @post_image.post_comments.count%></p>
 <div class="comments">
- <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>
+ <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
 
 </div>

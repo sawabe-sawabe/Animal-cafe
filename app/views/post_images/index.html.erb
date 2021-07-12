@@ -4,7 +4,7 @@
   <%= attachment_image_tag post_image, :image,  size: "280x280" %> <%#refileを使用しているため%>
   <p><%= post_image.user.name%></p>
   <p><%= post_image.genre.name %></p>
-  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: post_image %></p>
+  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: post_image %></p>　<%#非同期通信化するため%>
   <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
 <% end %>
 </div>
