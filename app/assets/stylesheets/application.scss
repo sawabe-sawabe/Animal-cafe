@@ -20,13 +20,16 @@ body{
   background-image: url(cafe201261763_TP_V.jpeg);
 
 }
-.slide{
+.slide-top{
   height: 700px;
 }
-.slide1{
+.slide-image{
   height: 618px;
 }
-
+.slide-about{
+  height: 300px;
+  width: 100%;
+}
 .image1 {
   background-image: url(image1.jpeg);
 }
@@ -42,8 +45,28 @@ body{
 .image5 {
   background-image: url(image5.jpeg);
 }
+.image6 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image7 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image8 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image9 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image10 {
+  background-image: url(kz8888-10.jpeg);
+}
 
 .menu{
-  background-color: white;
+  color: white;
   margin-top: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.about{
+  padding-top: 50px;
+  color: white;
 }
