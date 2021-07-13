@@ -10,18 +10,22 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <header class="header_out">
+     <% if user_signed_in? %>
+      <nav class="nav pt-2 mr-5  d-flex justify-content-end">
+        <div class=" header">
+         <ul class="d-flex">
+
+              <li><%= link_to "マイページ", user_path(current_user.id), class: "btn btn-secondary mr-3" %></li>
+              <li><%= link_to "ユーザー", users_path, class: "btn btn-secondary mr-3" %></li>
+              <li><%= link_to "写真", post_images_path, class: "btn btn-secondary mr-3" %></li>
+               <li><%= link_to "ジャンル", new_genre_path, class: "btn btn-secondary mr-3" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary mr-3" %></li>
+            <% end %>
+         </ul>
+        </div>
+     </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
