@@ -6,7 +6,7 @@
    <% @post_images.each do |post_image| %>
     <div class="card mr-5">
       <div class="card-body p-2 "> <p class="card-text pl-3"><%= post_image.title %></p></div>
-      <p class="mx-3 mb-0"><%= attachment_image_tag post_image, :image,  size: "280x300" %></p> <%#refileを使用しているため%>
+      <p class="mx-3 mb-0"><%=link_to post_image_path(post_image.id) do %><%= attachment_image_tag post_image, :image,  size: "280x300" %><% end %></p> <%#refileを使用しているため%>
       <table class="text-center">
        <tr>
          <td> <i class="fas fa-user"><%=link_to user_path(post_image.user.id) do %>

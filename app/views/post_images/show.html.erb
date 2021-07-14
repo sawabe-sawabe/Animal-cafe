@@ -1,19 +1,25 @@
-<div class="post-body">
-  <p>
-   <span><%= @post_image.title %></span>
-   <span><%= @post_image.genre.name %></span>
-   <span>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></span>
-  </p>
-  <p> <%= attachment_image_tag @post_image, :image,  size: "561x561"  %></p> <%#refileを使用しているため%>
-  <p><%= @post_image.caption %></p>
-  <p><%= @post_image.user.name %></p>
- <% if @post_image.user == current_user %>
-    <p><%= link_to "削除", post_image_path(@post_image), method: :delete %></p>
- <% end %>
-  <p class="favorite-btn"><%= render "favorites/favorite-btn", post_image: @post_image %></p>　<%#非同期通信化するため%>
+<div class="container">
+   <div class="row">
+    <table class="my-2">
+   <td><h4 class=" post_image"><%= @post_image.title %></h4></td>
+   
+   </table>
+ </div>
+  <div class="row post_image">
 
-</div>
+  <p class="col-6 card"> <%= attachment_image_tag @post_image, :image,  size: "540x550" ,class:"card-img my-3"%></p><%#refileを使用しているため%>
+  <div class ="col-6 text-center mt-5 ">
+  <h5><%= @post_image.caption %></h5>
+  <h5 class="mt-5" ><%= @post_image.genre.name %></h5>
+  <h5 class="mt-5"><%= @post_image.user.name %></h5>
+ <% if @post_image.user == current_user %>
+    <p ><%= link_to "削除", post_image_path(@post_image), method: :delete %></p>
+ <% end %>
+  <p class="favorite-btn mt-5"><%= render "favorites/favorite-btn", post_image: @post_image %></p>　<%#非同期通信化するため%>
   <p>コメント件数:<%= @post_image.post_comments.count%></p>
+</div>
+ <p class=" post_image">投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+</div>
 <div class="comments">
  <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
 
