@@ -8,10 +8,9 @@
   <% end %>
 <% end %>
   </div>
-  <div class="new-comment">
+  <div class="new-comment ml-5">
   <%= form_with(model:[@post_image,@post_comment],remote: true) do |f| %>
-  <p>
-  <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
-  <%= f.submit"送信する"%>
+  <p class="input-group">
+  <%= f.text_area :comment, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-secondary"%>
   <% end %>
   </p>
