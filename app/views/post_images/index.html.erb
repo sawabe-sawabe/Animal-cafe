@@ -2,25 +2,31 @@
   <div class="row mt-2">
      <%= link_to "新規投稿", new_post_image_path ,class: "btn btn-secondary "%>
   </div>
-  <div class="row mt-2">
+  <div class="row mt-2 ">
 <% @post_images.each do |post_image| %>
-<div class="card">
-    <div class="card-body p-2"> <p class="card-text pl-3"><%= post_image.title %></p></div>
+
+<div class="card mr-5">
+    <div class="card-body p-2 "> <p class="card-text pl-3"><%= post_image.title %></p></div>
      <p class="mx-3 mb-0"><%= attachment_image_tag post_image, :image,  size: "280x300" %></p> <%#refileを使用しているため%>
-    <table class="text-center mt-3">
+    <table class="text-center">
     <tr>
-    <td><%= post_image.user.name%></td>
-    <td><%= post_image.genre.name %></td>
+    <td> <i class="fas fa-user"><%=link_to user_path(post_image.user.id) do %><i>
+       <%= post_image.user.name%>
+        <%end%>
+    </td>
+    <td><%= post_image.created_at.strftime('%Y/%m/%d') %></td>
    </tr>
-    </table>
-   <table class="text-center mb-3">
+
+
     <tr>
-     <td> <%= post_image.created_at.strftime('%Y/%m/%d') %></td>
-     <td ><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></td>
-    <td class=" favorite-btn"><%= render "favorites/favorite-btn", post_image: post_image %></td>　<%#非同期通信化するため%>
-   
+       <td ><p   class="mt-2"><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %><p></td>
+
+       <td class=" favorite-btn"><p  class="mt-2"><%= render "favorites/favorite-btn", post_image: post_image %></p></td>　<%#非同期通信化するため%>
+
     </tr>
    </table>
+</div>
 <% end %>
 
+</div>
 </div>
