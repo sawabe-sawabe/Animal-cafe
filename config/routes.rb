@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'users/followers'
   devise_for :users
   root'homes#top'
-  get'about' =>'homes#show'
+  get'about' =>'homes#about'
 
   resources :users, only:[:show,:edit,:index,:update] do
    resource :relationships, only:[:create,:destroy] #フォロー・フォロー解除
