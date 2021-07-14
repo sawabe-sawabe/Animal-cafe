@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+
+body{
+  background-image: url(cafe201261763_TP_V.jpeg);
+
+}
+.slide-top{
+  height: 700px;
+}
+.slide-image{
+  height: 618px;
+}
+.slide-about{
+  height: 300px;
+  width: 100%;
+}
+.image1 {
+  background-image: url(image1.jpeg);
+}
+.image2 {
+  background-image: url(image2.jpeg);
+}
+.image3 {
+  background-image: url(image3.jpeg);
+}
+.image4 {
+  background-image: url(image4.jpeg);
+}
+.image5 {
+  background-image: url(image5.jpeg);
+}
+.image6 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image7 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image8 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image9 {
+  background-image: url(kz8888-10.jpeg);
+}
+.image10 {
+  background-image: url(kz8888-10.jpeg);
+}
+
+.menu{
+  color: white;
+  margin-top: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.about{
+  padding-top: 50px;
+  color: white;
+}
+.Inup{
+  color: white;
+  margin-top: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+header ,footer{
+   background-color: rgba(0, 0, 0, 0.5);
+}
+ul {
+  list-style: none;
+}
+
+.like-btn {
+  color: #8899a6;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
+}
+
+.post_image{
+  color: white;
+}
+.comments{
+  color: white;
+  margin-bottom: 100px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.new-comment{
+  position: fixed;
+  bottom: 3px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: white ;
+}
