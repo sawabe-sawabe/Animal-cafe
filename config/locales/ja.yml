@@ -1,0 +1,7 @@
+ja:
+ activerecord:
+   attributes:
+     post_image:
+       title: タイトル
+       image: 写真
+       genre_id: ジャンル
