@@ -52,7 +52,7 @@
    </table>
    <%= link_to "編集", edit_user_path(@user.id) %>
  </div>
-<% @images.each do |post_image| %>
+<% @post_images.each do |post_image| %>
 <div>
   <p><%= post_image.title %></p>
   <%= attachment_image_tag post_image, :image,  size: "280x280" %> <%#refileを使用しているため%>
