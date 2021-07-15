@@ -6,7 +6,7 @@ class PostImage < ApplicationRecord
    has_many :post_comments, dependent: :destroy
 
    validates :image, presence: true
-   validates :genre_id, presence: true
+   validates :genre, presence: true
    validates :title, presence: true
 
 
