@@ -1,6 +1,6 @@
 <div class="container">
 
-   <div class="row my-2">
+   <div class="row my-3">
      <h4 class=" post_image"><i class="fas fa-camera mr-2"></i><%= @post_image.title %></h4>
    </div>
 
@@ -20,24 +20,28 @@
            <i class="fas fa-user mr-1"></i><%= @post_image.user.name %>
           <%end%>
        </h4>
-      <% if @post_image.user == current_user %>
-        <p class="btn btn-secondary">
-         <%= link_to "削除", post_image_path(@post_image), method: :delete ,class: "link"%>
-        </p>
-      <% end %>
-      <h4 class="favorite-btn mt-5">
-        <%= render "favorites/favorite-btn", post_image: @post_image %> <%#非同期通信化するため%>
-      </h4>
-      <h5>
-        コメント件数<i class="fas fa-comments ml-1"><%= @post_image.post_comments.count%></i>
-      </h5>
-      <h5 class=" mt-5">
+       <h4 class="favorite-btn mt-5">
+         <%= render "favorites/favorite-btn", post_image: @post_image %> <%#非同期通信化するため%>
+       </h4>
+       <h5>
+         コメント件数<i class="fas fa-comments ml-1"><%= @post_image.post_comments.count%></i>
+       </h5>
+       <h5 class=" mt-5">
          投稿日時 <i class="fas fa-clock ml-1"><%= @post_image.created_at.strftime('%Y/%m/%d') %></i>
-      </h5>
+       </h5>
+     <% if @post_image.user == current_user %>
+       <table class="mx-auto mt-5" >
+        <td>
+          <h5 class="btn btn-info mr-5"><%= link_to "編集", edit_post_image_path(@post_image.id),class: "link"%></h5>
+        </td>
+        <td>
+         <h5 class="btn btn-dark"> <%= link_to "削除", post_image_path(@post_image), method: :delete ,class: "link"%></h5>
+        </td>
+       </table>
+     <% end %>
     </div>
-
 </div>
 
-<div class="comments">
+<div class="comments my-3 w-100">
  <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
 </div>
