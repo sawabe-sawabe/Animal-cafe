@@ -11,14 +11,19 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower# 中間テーブルのを通り、Userモデルのfollowedインスタンスを取得するため
   has_many :followings, through: :relationships, source: :followed # 中間テーブルを通り、Userモデルのfollowerインスタンスを取得するため
   attachment :image
-  def follow(user_id)
+  
+  
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true #同じ名前は使えないようにするため
+  
+  
+  def follow(user_id)# フォロー
         relationships.create(followed_id: user_id)
   end
-  def unfollow(user_id)
+  def unfollow(user_id)# フォロー解除
     relationships.find_by(followed_id: user_id).destroy
   end
 
-  def following?(user) # 今フォローしているか確認する
+  def following?(user) # 今フォローしているか確認するため
     followings.include?(user)
   end
 end
