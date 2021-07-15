@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @user = User.find(params[:id])
     @post_images = @user.post_images
@@ -15,7 +17,11 @@ class UsersController < ApplicationController
 
   def update
     @user = user.find(params[:id])
-    @users.update(user_params)
+    if @users.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
 

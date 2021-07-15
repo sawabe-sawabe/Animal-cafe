@@ -1,14 +1,17 @@
 class GenresController < ApplicationController
-
+  before_action :authenticate_user!
   def new
    @genre = Genre.new
    @genres = Genre.all
   end
 
   def create
-   genre = Genre.new(genre_params)
-   genre.save
-   redirect_to new_genre_path
+   @genre = Genre.new(genre_params)
+   if @genre.save
+     redirect_to new_genre_path
+   else
+     redirect_to request.referer #一覧表示と新規登録画面が同じためrender不使用
+   end
   end
 
   def edit
@@ -17,8 +20,11 @@ class GenresController < ApplicationController
 
   def update
    @genre = Genre.find(params[:id])
-   @genre.update(genre_params)
-   redirect_to new_genre_path
+    if @genre.update(genre_params)
+     redirect_to new_genre_path
+    else
+     render :edit
+    end
   end
 
 private
