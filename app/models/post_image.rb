@@ -13,10 +13,12 @@ class PostImage < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?  #ユーザーidがテーブル内に存在するか確認するため
   end
+
   def self.match(value)
-  @post_image = PostImage.where(genre_id: value)
+    @post_image = PostImage.where(genre_id: value) #value値に代入されたgenre.idで検索する
   end
-  def self.search(search,word)
+
+  def self.search(search,word) #searchパラメーターで検索方法を分岐
     if  search == "forward_match"
       @post_image = PostImage.where("title LIKE?","#{word}%")
 

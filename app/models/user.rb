@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
 
-  def self.search(search,word) #searchパラメーターを使用して検索方法を分岐s
+  def self.search(search,word) #searchパラメーターを使用して検索方法を分岐
     if  search == "forward_match"
       @user = User.where("name LIKE?","#{word}%")
 
