@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  get 'search/search'
   get 'users/show'
   get 'users/index'
   get 'users/followings'
@@ -30,8 +31,8 @@ Rails.application.routes.draw do
   get'rooms/:id' =>'rooms#show' #DM機能
 
   post'messages' =>'messages#create'  #DM機能
-
-
+  get 'search' => 'searches#search'
+  get 'match' => 'searches#match'
 
 
 end

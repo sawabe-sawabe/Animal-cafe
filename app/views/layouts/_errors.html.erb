@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <div id="error_explanation">
-  <div class=" alert alert-danger">
+  <div class=" alert alert-danger shadow">
     <h3><%= pluralize(obj.errors.count,"件") %>のエラーがありました！</h3>
     <ul>
       <% obj.errors.full_messages.each do |message| %>
