@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
    #検索種類の振り分け
     if  @range == '1'
       @user = User.search(search,word)
-    elsif  @post_image == "2"
+    elsif  @range == "2"
       @post_image = PostImage.search(search,word)
     else
      flash[:alert] = "選択欄の項目は必須です。選択してください"
