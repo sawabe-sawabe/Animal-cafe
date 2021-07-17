@@ -1,20 +1,38 @@
-<h4>ユーザー一覧</h4>
- <%  @users.each do |user| %>
-  <table>
-    <tr>
-      <td><%= attachment_image_tag user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %></td>
-      <td><%=user.name%></td>
-      <td><%= user.introduction%></td>
-      <td><%=link_to "show",user_path(user.id) %></td>
-  <% unless user == current_user %>
-   <%if current_user.following?(user)%>
-      <td> <%=link_to "フォローを外す",user_relationships_path(user.id),method: :delete %></td>
-   <% else %>
-      <td><%= link_to "フォローをする",user_relationships_path(user.id),method: :post%></td>
-   <% end %>
-  <% end %>
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
+    <div class="row mt-4">
+      <h2 class="title">ユーザー一覧</h2>
+    </div>
+
+   <div class="row mt-3 profile title">
+     <div class="mx-5 my-5 w-100 ">
+      <%  @users.each do |user| %>
+      <table class="mb-3">
+        <tr>
+          <td>
+             <h4><%= attachment_image_tag user,:profile_image_url, format: 'image', size: "80x80" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
+          </td>
+          <td>
+             <h4 class="mx-5"><i class="fas fa-user mr-1"></i><%=user.name%></h4>
+          </td>
+          <td>
+             <h4 class="mx-5"><i class="fas fa-comment-alt mr-2"></i><%= user.introduction%></h4>
+          </td>
+          <td>
+             <h4 class="mx-5 btn btn-secondary"><%=link_to "ユーザーページ",user_path(user.id) ,class:"link"%></h4> <%# マイページへ飛ぶのをわかりやすくするためボタン設置 %>
+          </td>
+        <% unless user == current_user %>
+          <%if current_user.following?(user)%>
+          <td>
+             <h4 class=" btn btn-dark"><%=link_to "フォローを外す",user_relationships_path(user.id),method: :delete,class:"link" %></h4>
+          </td>
+         <% else %>
+          <td>
+             <h4 class=" btn btn-info"><%= link_to "フォローをする",user_relationships_path(user.id),method: :post,class:"link"%></h4>
+          </td>
+         <% end %>
+        <% end %>
       </tr>
-    </tr>
-  </table>
+    </table>
   <% end %>
 <%= paginate @users %>
