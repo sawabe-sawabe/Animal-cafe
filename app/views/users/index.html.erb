@@ -10,7 +10,7 @@
       <table class="mb-3">
         <tr>
           <td>
-             <h4><%= attachment_image_tag user,:profile_image_url, format: 'image', size: "80x80" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
+             <h4><%= attachment_image_tag user,:profile_image, format: 'image', size: "80x80" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
           </td>
           <td>
              <h4 class="mx-5"><i class="fas fa-user mr-1"></i><%=user.name%></h4>
@@ -36,4 +36,4 @@
   </table>
   <% end %>
   <%= paginate @users %>
-</div>
+

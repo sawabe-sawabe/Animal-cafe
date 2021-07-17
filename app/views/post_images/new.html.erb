@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container mb-5">
   <div class="alert-warning mt-1 text-center"> <%= alert %> </div>
   <div class="post mt-5 pb-5">
     <div class="row ">
        <h2 class= 'mt-5 mx-auto'>新規投稿</h2>
     </div>
-  　<div class="row ">
-　　  <div class="col-6 mx-auto">
-　　   <%= form_with model:@post_image,local:true do |f| %>
-　　    <%= render 'layouts/errors', obj: @post_image  %>
+   <div class="row ">
+    <div class="col-6 mx-auto">
+     <%= form_with model:@post_image,local:true do |f| %>
+      <%= render 'layouts/errors', obj: @post_image  %>
        <div>
          <h4><i class="fas fa-camera mr-2"></i>写真 </h4>
           <h4 class="ml-5"><%= f.attachment_field :image %></h4>
