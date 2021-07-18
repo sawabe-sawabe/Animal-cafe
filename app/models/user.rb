@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true #同じ名前は使えないようにするため
-
+  validates :word, length: { maximum: 20 }
 
   def follow(user_id)# フォロー
         relationships.create(followed_id: user_id)
