@@ -1,11 +1,36 @@
-<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
-
-<div class="message" style="width: 400px;">
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div>
+  <div class="mt-5">
+<h1 class="title" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+  </div>
+  <div class=" mx-5 mt-5 ">
+  
   <% @chats.each do |chat| %>
+   
     <% if chat.user_id == current_user.id %>
-      <p style="text-align: right;"><%= chat.message %></p>
+          <div><%=chat.created_at.strftime('%Y/%m/%d/%H:%M') %></div>
+        <div class ="  chat-box　message d-flex flex-row align-items-center mb-4 w-100" >
+       
+        <div class="chat-face">
+         <h4 class ="mr-4"> <%= attachment_image_tag current_user,:profile_image, format: 'image', size: "100x100" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
+         </div>
+       <div class="chat-hukidashi essage-text p-2 ms-2 mb-0   bg-info rounded"> <h1 class=""><%=chat.message %><h1>
+        
+          </div>
+        
+      </div>
+       
     <% else %>
-      <p style="text-align: left;"><%= chat.message %></p>
+      <div class="text-right"><%=chat.created_at.strftime('%Y/%m/%d/%H:%M')%></div>
+     <div class ="  message d-flex flex-row-reverse align-items-start mb-4 w-100" >
+        <div class="chat-face">
+         <h4 class ="ml-4"> <%= attachment_image_tag @user,:profile_image, format: 'image', size: "100x100" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
+         </div>
+       <div class="chat-hukidashi essage-text p-2 ms-2 mb-0   bg-white rounded"> <h1 class=""><%=chat.message %><h1>
+        
+          </div>
+        
+      </div>
     <% end %>
   <% end %>
 </div>
