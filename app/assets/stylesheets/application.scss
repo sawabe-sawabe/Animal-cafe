@@ -98,7 +98,7 @@ ul {
   margin-bottom: 100px;
   background-color: rgba(0, 0, 0, 0.7);
 }
-.new-comment{
+.new-comment ,.chats{
   position: fixed;
   bottom: 33px;
 }
@@ -119,6 +119,6 @@ footer {
    color: white;
    background-color: rgba(0, 0, 0, 0.6);
 }
-.title{
+.title, .time{
   color: white;
 }

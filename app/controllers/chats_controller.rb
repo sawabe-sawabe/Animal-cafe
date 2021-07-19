@@ -13,12 +13,13 @@ class ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats
+    @chats = @room.chats.order('created_at DESC') #最新の情報が上に来るように並び替え
     @chat = Chat.new(room_id: @room.id)
   end
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
+     redirect_to request.referer
   end
 
   private
@@ -29,7 +30,7 @@ class ChatsController < ApplicationController
   def follow_each_other #相互フォローしているユーザーのみDMできるようにする
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
-      redirect_to books_path
+      redirect_to user_path(user)
     end
   end
  end

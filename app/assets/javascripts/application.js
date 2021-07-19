@@ -71,3 +71,8 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
+
+　
+var $scrollAuto = $('.messages');
+
+$scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 1000)}, 'fast')
