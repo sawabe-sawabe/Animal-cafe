@@ -26,7 +26,7 @@ class ChatsController < ApplicationController
     params.require(:chat).permit(:message, :room_id)
   end
 
-  def follow_each_other　#相互フォローしているユーザーのみDMできるようにする
+  def follow_each_other #相互フォローしているユーザーのみDMできるようにする
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
       redirect_to books_path
