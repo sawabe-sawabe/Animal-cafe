@@ -27,8 +27,7 @@ Rails.application.routes.draw do
 
   resources :genres, only:[:new,:create,:edit,:update]
 
-  post'rooms' =>'rooms#create' #DM機能
-  get'rooms/:id' =>'rooms#show' #DM機能
+  resources :chats, only: [:show, :create] #DM機能
 
   post'messages' =>'messages#create'  #DM機能
   get 'search' => 'searches#search'

@@ -3,38 +3,39 @@
     <div class="row mt-4">
       <h2 class="title"><%= current_user.name%>さんのフォロワー</h2>
     </div>
+
    <% if @users.exists? %>
    <div class="row mt-3 profile title">
      <div class="mx-5 my-5 w-100 ">
       <%  @users.each do |user| %>
-      <table class="mb-3">
+      <table class="mx-5 mb-4">
         <tr>
           <td>
-             <h4><%= attachment_image_tag user,:profile_image, format: 'image', size: "80x80" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
+             <h4 class="ml-2"><%= attachment_image_tag user,:profile_image, format: 'image', size: "80x100" , format: 'jpeg', fallback: "no_image.jpg" ,class:"img-thumbnail"%></h4>
           </td>
           <td>
-             <h4 class="mx-5"><i class="fas fa-user mr-1"></i><%=user.name%></h4>
+             <h4 class="ml-5"><i class="fas fa-user mr-1"><%=user.name%></i></h4>
           </td>
           <td>
-             <h4 class="mx-5"><i class="fas fa-comment-alt mr-2"></i><%= user.word%></h4>
+             <h4><i class="fas fa-comment-alt mr-2 ml-4"></i>ひとこと<h4><h5 class=" ml-5"><%= user.word %></h5>
           </td>
-          <td>
-             <h4 class="mx-5 btn btn-secondary"><%=link_to "ユーザーページ",user_path(user.id) ,class:"link"%></h4> <%# マイページへ飛ぶのをわかりやすくするためボタン設置 %>
+          <td >
+             <h4 class="ml-5 btn btn-secondary "><%=link_to "ユーザーページ",user_path(user.id) ,class:"link"%></h4> <%# マイページへ飛ぶのをわかりやすくするためボタン設置 %>
           </td>
         <% unless user == current_user %>
           <%if current_user.following?(user)%>
-          <td>
-             <h4 class=" btn btn-dark"><%=link_to "フォローを外す",user_relationships_path(user.id),method: :delete,class:"link" %></h4>
+          <td class="ml-5">
+             <h4 class="  btn btn-dark ml-4"><%=link_to "フォローを外す",user_relationships_path(user.id),method: :delete,class:"link" %></h4>
           </td>
          <% else %>
           <td>
-             <h4 class=" btn btn-info"><%= link_to "フォローをする",user_relationships_path(user.id),method: :post,class:"link"%></h4>
+             <h4 class=" btn btn-info ml-4"><%= link_to "フォローをする",user_relationships_path(user.id),method: :post,class:"link"%></h4>
           </td>
          <% end %>
         <% end %>
-        </tr>
-      </table>
-      <% end %>
+    </tr>
+  </table>
+  <% end %>
    <%else%>
    <h4 class="row mt-3  title">ユーザーはいません</h4>
   <%end%>
