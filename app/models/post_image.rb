@@ -6,7 +6,7 @@ class PostImage < ApplicationRecord
    has_many :post_comments, dependent: :destroy
 
    validates :image, presence: true
-   validates :genre_id, presence: true
+   validates :genre, presence: true
    validates :title, presence: true
 
 
@@ -14,4 +14,24 @@ class PostImage < ApplicationRecord
     favorites.where(user_id: user.id).exists?  #ユーザーidがテーブル内に存在するか確認するため
   end
 
+  def self.match(value)
+    @post_image = PostImage.where(genre_id: value) #value値に代入されたgenre.idで検索する
+  end
+
+  def self.search(search,word) #searchパラメーターで検索方法を分岐
+    if  search == "forward_match"
+      @post_image = PostImage.where("title LIKE?","#{word}%")
+
+    elsif search == "backward_match"
+      @post_image = PostImage.where("title LIKE?","%#{word}%")
+
+    elsif search == "perfect_match"
+      @post_image = PostImage.where("title LIKE?","#{word}")
+
+    elsif search == "partial_match"
+      @post_image = PostImage.where("title LIKE?","%#{word}%")
+    else
+      @post_image = PostImage.all
+    end
+  end
 end

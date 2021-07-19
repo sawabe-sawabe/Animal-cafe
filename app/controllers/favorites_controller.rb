@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
  end
 
  def index
-   @user = User.find(params[:user_id])
+   @users = User.find(params[:user_id]) 
  end
 
 end

@@ -1,75 +1,98 @@
-<h4>マイページ</h4>
-<div>
-   <table>
-      <tr>
-        <td><%= attachment_image_tag @user,:profile_image_url, format: 'image', size: "40x40" , format: 'jpeg', fallback: "no_image.jpg" %></td>
-        <td>
-         <p> ユーザーネーム<%=@user.name %><p>
-         <p> フォロー<%= link_to " #{@user.followings.count}", user_followings_path(@user.id) %><p>
-         <p> フォロワー<%= link_to " #{@user.followers.count}",  user_followers_path(@user.id) %><p>
-        </td>
-      </tr>
-      <tr>
-        <td>グループ</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>ひとこと</td>
-        <td><%=@user.introduction %></td>
-      </tr>
-      <tr>
-        <td>好きな動物</td>
-        <td><%=@user.favorite_animal %></td>
-      </tr>
-      <tr>
-        <td>飼っている動物</td>
-        <td><%=@user.having_pets %></td>
-      </tr>
-      <tr>
-        <td>お気に入り</td>
-        <td>
-           <%= link_to  user_favorites_path(@user.id)  do %>
-           <%= @user.favorites.count %>
-           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>コメント</td>
-        <td><%= link_to "#{@post_comments.count} コメント",  user_post_comments_path(@user.id) %></td>
-      </tr>
-  <% unless @user == current_user %>
-    <%if current_user.following?(@user)%>
-      <tr>
-        <%=link_to "フォローを外す",user_relationships_path(@user.id),method: :delete%>
-      </tr>
-    <% else %>
-      <tr>
-        <%= link_to "フォローをする",user_relationships_path(@user.id),method: :delete,method: :post%>
-      </tr>
-    <% end %>
-  <% end %>
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div>　<%# 検索機能のエラー時flashメッセージを表示する　%>
+    <div class="row mt-4">
+      <h2 class="title"><%= @user.name%>さんのマイページ
+        <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+        <%= link_to 'chatを始める', chat_path(@user), class: "ml-5 btn btn-info" %>
+        <% end %>
+      </h2>
 
-   </table>
-   <%= link_to "編集", edit_user_path(@user.id) %>
- </div>
-<% @post_images.each do |post_image| %>
-<div>
-  <p><%= post_image.title %></p>
-  <%= attachment_image_tag post_image, :image,  size: "280x280" %> <%#refileを使用しているため%>
-  <p><%= post_image.user.name%></p>
-  <p><%= post_image.genre.name %></p>
-  <% if post_image.favorited_by?(current_user) %>
-    <p>
 
-        ♥<%= post_image.favorites.count %>
+    </div>
 
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(post_image), method: :post do %>
-        ♡<%= post_image.favorites.count %>
-      <% end %>
-    </p>
-  <%end%>
-    <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
-<% end %>
+    <div class="row mt-3 profile ">
+      <div class="mt-4 col-4 title">
+        <p class="mt-3 ml-5">
+          <%= attachment_image_tag @user,:profile_image, format: 'image', size: "300x110" , format: 'jpeg', fallback: "no_image.jpg",class:"img-thumbnail" %>
+        </p>
+
+      </div>
+       <div class=" mt-5 col-4 title w-100 text-center">
+            <h4 class="">  <i class="fas fa-user mr-1"></i><%=@user.name %></h4>
+            <h5 class=" mt-4"><i class="fas fa-cat mr-2"></i>好きな動物</h5>
+            <h5 class=" mt-3"><%=@user.favorite_animal %></h5>
+
+            <h5 class="mt-4 "><i class="fas fa-dog mr-2"></i>飼っている動物</h5>
+            <h5 class=" mt-3"><%=@user.having_pets %></h5>
+          </td>
+       </div>
+
+       <div class="mt-5  col-4 title w-100 ">
+         <h5 class="mr-5"> <i class="fas fa-comment-alt mr-2"></i>ひとこと<p class="mt-2"> <%= @user.word %></p></h5>
+         <h5 class="mt-3"> フォロー<%= link_to " #{@user.followings.count}", user_followings_path(@user.id) %></h5>
+          <h5  class="mt-3">フォロワー<%= link_to " #{@user.followers.count}",  user_followers_path(@user.id) %></h5>
+          <h5 class="mt-3">
+            <i class="fas fa-heart mr-2"></i>お気に入り
+            <%= link_to  user_favorites_path(@user.id)  do %>
+            <%= @user.favorites.count %>
+            <% end %>
+          </h5>
+          <h5 class="mt-3">
+            <i class="fas fa-comments mr-2"></i>コメント
+            <%= link_to "#{@post_comments.count} コメント",  user_post_comments_path(@user.id) %>
+          </h5>
+        </div>
+
+
+        <div class="ml-5 title w-100">
+          <h5 class="ml-3"><i class="fas fa-comment-dots"></i>自己紹介</h5>
+          <h5 class=" ml-5  title"><%=@user.introduction %></h5>
+        </div>
+
+        <div class=" text-center w-100">
+          <% if @user == current_user %>
+          <h5 class="btn btn-info mt-3 mx-5 mb-3 w-50"><%=link_to "プロフィール編集",edit_user_path(@user.id),class:"fas fa-user-cog link  "%></5>
+
+          <%elsif current_user.following?(@user)%>
+          <h5 class="btn btn-dark mt-3 mx-5 mb-3  w-50"><%=link_to "フォローを外す",user_relationships_path(@user.id),method: :delete,class:"link"%></5>
+
+          <% else %>
+          <h5 class="btn btn-info mt-3 mx-5  mb-3  w-50"><%= link_to "フォローをする",user_relationships_path(@user.id),method: :delete,method: :post,class:"link"%></5>
+          <% end %>
+        </div>
+
+        <div class="row mt-3 ml-4 ">
+          <% @post_images.each do |post_image| %>
+          <div class="card ml-5 mr-3 mb-5 mt-5">
+            <div class="card-body p-2 ">
+              <p class="card-text pl-3"><i class="fas fa-camera mr-2"></i><%= post_image.title %></p>
+            </div>
+            <p class="mx-3 mb-0">
+                <%=link_to post_image_path(post_image.id) do %><%= attachment_image_tag post_image, :image,  size: "250x300" %><% end %> <%#refileを使用しているため%>
+            </p>
+
+            <table class="text-center">
+              <tr>
+                <td>
+                  <i class="fas fa-user"><%=link_to user_path(post_image.user.id) do %>
+                  <%= post_image.user.name%>
+                  <%end%></i>
+                </td>
+                <td>
+                  <i class="fas fa-clock ml-1"></><%= post_image.created_at.strftime('%Y/%m/%d') %>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                   <p class="mt-2"><i class="fas fa-comments mr-1"></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %><p>
+                </td>
+                <td class=" favorite-btn">
+                  <p  class="mt-2"><%= render "favorites/favorite-btn", post_image: post_image %></p>　<%#非同期通信化するため%>
+                </td>
+             </tr>
+           </table>
+         </div>
+        <% end %>
+        </div>
+   </div>
+</div>
