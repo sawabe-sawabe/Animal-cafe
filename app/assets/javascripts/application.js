@@ -73,6 +73,11 @@ $(document).ready(function () {
 });
 
 　
-var $scrollAuto = $('.messages');
-
-$scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 1000)}, 'fast')
+$(function() {
+  $('#back a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
