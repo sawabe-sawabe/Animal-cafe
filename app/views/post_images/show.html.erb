@@ -19,16 +19,17 @@
        <h4 class="mt-5" >
           ジャンル<i class="fas fa-paw ml-1"><%= @post_image.genre.name %></i>
        </h4>
-       <h4 class="mt-5">
+       <h4 class="mt-5 mb-4">
           <%=link_to user_path(@post_image.user.id) , class:"link" do %>
            <i class="fas fa-user mr-1"></i><%= @post_image.user.name %>
           <%end%>
        </h4>
-       <h4 class="favorite-btn mt-5">
-        <div id="post_image_<%= @post_image.id %>">
+
+        <h4  id="post_image_<%= @post_image.id %>" >
          <%= render "favorites/favorite-btn", post_image: @post_image %> <%#非同期通信化するため%>
-        </div>
-       </h4>
+        </h4>
+
+
        <h5 class=" mt-4">
          コメント件数<i class="fas fa-comments ml-2"><%= @post_image.post_comments.count%></i>
        </h5>
@@ -49,5 +50,13 @@
  </div>
 
 <div class="comments my-3 w-100">
+
  <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
+</div>
+<div class="new-comment ml-5">
+  <%= form_with(model:[@post_image,@post_comment],remote: true) do |f| %>
+  <p class="input-group">
+  <%= f.text_area :comment, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info"%>
+  <% end %>
+  </p>
 </div>
