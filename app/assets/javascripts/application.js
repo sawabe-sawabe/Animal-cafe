@@ -72,7 +72,7 @@ $(document).ready(function () {
   });
 });
 
-　
+
 $(function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
@@ -81,3 +81,5 @@ $(function() {
     event.preventDefault();
   });
 });
+
+

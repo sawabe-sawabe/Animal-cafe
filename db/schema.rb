@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_224656) do
+ActiveRecord::Schema.define(version: 2021_07_21_055600) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_224656) do
     t.text "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "word"
+    t.integer "owner_id"
   end
 
   create_table "messages", force: :cascade do |t|

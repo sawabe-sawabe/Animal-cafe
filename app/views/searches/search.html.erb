@@ -30,14 +30,13 @@
 
 
 <% else %>
-<div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
     <div class="row mt-4">
-      <h2 class="title">"<%=params[:word]%>"の検索結果></h2>
-    </div>
-
+      <h2 class="title">"<%=params[:word]%>"の検索結果</h2>
    <div class="row mt-3 profile title">
      <div class="mx-5 my-5 w-100 ">
-      <%  @users.each do |user| %>
+      <%  @user.each do |user| %>
       <table class="mx-5 mb-4">
         <tr>
           <td>
@@ -68,3 +67,4 @@
   <% end %>
  </div>
 <div>
+<% end %>
