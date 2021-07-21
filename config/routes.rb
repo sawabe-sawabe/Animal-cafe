@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-  get 'search/search'
-  get 'users/show'
-  get 'users/index'
-  get 'users/followings'
-  get 'users/followers'
   devise_for :users
   root'homes#top'
   get'about' =>'homes#about'
