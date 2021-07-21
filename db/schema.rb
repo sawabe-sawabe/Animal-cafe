@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_012703) do
+ActiveRecord::Schema.define(version: 2021_07_20_224656) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 2021_07_19_012703) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.text "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

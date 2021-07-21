@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+
+
+
   devise_for :users
   root'homes#top'
   get'about' =>'homes#about'
@@ -23,9 +26,13 @@ Rails.application.routes.draw do
 
   resources :chats, only: [:show, :create] #DM機能
 
-  post'messages' =>'messages#create'  #DM機能
-  get 'search' => 'searches#search'
-  get 'match' => 'searches#match'
+  get 'search' => 'searches#search'#ユーザー・投稿検索機能
+  get 'match' => 'searches#match' #ジャンル検索機能
 
+
+  resources :groups do
+  resources:group_users, only:[:index]
+   resource :group_users, only: [:create, :destroy]
+  end
 
 end
