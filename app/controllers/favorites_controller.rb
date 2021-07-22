@@ -3,20 +3,20 @@ class FavoritesController < ApplicationController
 
  def create
    @post_image = PostImage.find(params[:post_image_id])
-   favorite =  @post_image.favorites.new(user_id: current_user.id)
+   favorite = current_user.favorites.new(post_image_id: @post_image.id)
    favorite.save
-  
+
  end
 
  def destroy
    @post_image = PostImage.find(params[:post_image_id])
-   favorite =  @post_image.favorites.find_by(user_id: current_user.id)
+   favorite = current_user.favorites.find_by(post_image_id: @post_image.id)
    favorite.destroy
-   
+
  end
 
  def index
-   @users = User.find(params[:user_id])
+   @user = User.find(params[:user_id])
  end
 
 end
