@@ -30,9 +30,14 @@ class GroupsController < ApplicationController
     def update
       @group = Group.find(params[:id])
       @group.update(post_book_params)
-
     end
 
+    def  destroy
+      @group = Group.find(params[:id])
+      @group.destroy
+    redirect_to groups_path
+    end
+  
 
 private
 

@@ -10,12 +10,12 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロワー取得
   has_many :followers, through: :reverse_of_relationships, source: :follower# 中間テーブルのを通り、Userモデルのfollowedインスタンスを取得するため
   has_many :followings, through: :relationships, source: :followed # 中間テーブルを通り、Userモデルのfollowerインスタンスを取得するため
-  has_many :user_rooms
-  has_many :chats
-  has_many :rooms, through: :user_rooms
-  has_many :group_users
-  has_many:groups, through: :group_users
-  
+  has_many :user_rooms,dependent: :destroy
+  has_many :chats,dependent: :destroy
+  has_many :rooms, through: :user_rooms,dependent: :destroy
+  has_many :group_users,dependent: :destroy
+  has_many:groups, through: :group_users,dependent: :destroy
+
   attachment :profile_image
 
 
