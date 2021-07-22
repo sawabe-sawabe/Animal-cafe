@@ -25,7 +25,7 @@
           <%end%>
        </h4>
 
-        <h4  id="post_image_<%= @post_image.id %>" >
+        <h4 id="post_image_<%= @post_image.id %>" >
          <%= render "favorites/favorite-btn", post_image: @post_image %> <%#非同期通信化するため%>
         </h4>
 
@@ -49,11 +49,11 @@
     </div>
  </div>
 
-<div class="comments my-3 w-100">
-
+<div class="comments ml-4 my-3 w-100">
+ <div id="post_image_<%= @post_image.id%>_comment">
  <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
 </div>
-<div class="new-comment ml-5">
+<div class="new-comment ml-4">
   <%= form_with(model:[@post_image,@post_comment],remote: true) do |f| %>
   <p class="input-group">
   <%= f.text_area :comment, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info"%>

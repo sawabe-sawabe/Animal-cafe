@@ -1,7 +1,5 @@
 <% if post_image.favorited_by?(current_user) %>
-     <p class="mt-1"> <%= link_to  post_image.favorites.count,post_image_favorites_path(post_image), method: :delete, remote: true , class: "fa fa-heart like-btn-unlike" %></p>
-
-    <% else %>
-    <p class="mt-1">   <%= link_to  post_image.favorites.count,post_image_favorites_path(post_image),method: :post ,remote: true, class: "fa fa-heart like-btn " %></p>
-
-   <% end %>
+  <%= link_to  post_image.favorites.count,post_image_favorites_path(post_image), method: :delete, remote: true , class: "fa fa-heart like-btn-unlike " %>
+<% else %>
+  <%= link_to  post_image.favorites.count,post_image_favorites_path(post_image),method: :post ,remote: true, class: "fa fa-heart like-btn " %>
+<% end %>

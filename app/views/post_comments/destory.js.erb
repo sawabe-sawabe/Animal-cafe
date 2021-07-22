@@ -1,3 +1,0 @@
-$("#post_image_<%= @post_image.id %> .comments-count").html("コメント数: <%= @post_image.post_comments.count %>");
-$(".post_image_comment").html("<%= j(render 'post_images/comment', post_image: @post_image) %>");
-$("#post_image_comment_comment").val("");
