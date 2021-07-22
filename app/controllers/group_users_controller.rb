@@ -1,7 +1,6 @@
 class GroupUsersController < ApplicationController
   def index
-    @group = Group.find(params[:id])
-    @users = @group.group_users
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -16,7 +15,6 @@ class GroupUsersController < ApplicationController
      group_user_join = current_user.group_users.find_by(group_id: @group.id)
      group_user_join.destroy
      redirect_to request.referer
-
   end
 
 

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
    get 'followers' => 'relationships#followers', as: 'followers' #フォローフォロワー一覧取得
    resources:favorites, only:[:index]
    resources:post_comments, only:[:index]
+   resources:group_users, only:[:index]
   end
 
   resources :post_images do
@@ -31,8 +32,7 @@ Rails.application.routes.draw do
 
 
   resources :groups do
-  resources:group_users, only:[:index]
-   resource :group_users, only: [:create, :destroy]
+    resource :group_users, only: [:create, :destroy]
   end
 
 end

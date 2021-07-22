@@ -10,6 +10,8 @@ class SearchesController < ApplicationController
       @user = User.search(search,word)
     elsif  @range == "2"
       @post_image = PostImage.search(search,word)
+    elsif  @range == "3"
+      @group = Group.search(search,word)
     else
      flash[:alert] = "選択欄の項目は必須です。選択してください"
      redirect_to request.referer

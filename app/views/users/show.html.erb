@@ -19,12 +19,12 @@
       </div>
        <div class=" mt-5 col-4 title w-100 text-center">
             <h4 class="">  <i class="fas fa-user mr-1"></i><%=@user.name %></h4>
-            <h5 class=" mt-4"><i class="fas fa-cat mr-2"></i>好きな動物</h5>
+            <h5  class="mt-3"><i class="fas fa-users mr-1"></i>グループ<%= link_to " #{@user.groups.count}",   user_group_users_path(@user)%></h5>
+            <h5 class=" mt-3"><i class="fas fa-cat mr-2"></i>好きな動物</h5>
             <h5 class=" mt-3"><%=@user.favorite_animal %></h5>
-
-            <h5 class="mt-4 "><i class="fas fa-dog mr-2"></i>飼っている動物</h5>
+            <h5 class="mt-3 "><i class="fas fa-dog mr-2"></i>飼っている動物</h5>
             <h5 class=" mt-3"><%=@user.having_pets %></h5>
-          </td>
+
        </div>
 
        <div class="mt-5  col-4 title w-100 ">
