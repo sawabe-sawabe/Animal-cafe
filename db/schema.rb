@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_055600) do
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

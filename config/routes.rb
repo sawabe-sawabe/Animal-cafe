@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :genres, only:[:new,:create,:edit,:update]
 
   resources :chats, only: [:show, :create] #DM機能
+  
 
   get 'search' => 'searches#search'#ユーザー・投稿検索機能
   get 'match' => 'searches#match' #ジャンル検索機能
@@ -33,7 +34,8 @@ Rails.application.routes.draw do
 
   resources :groups do
     resource :group_users, only: [:create, :destroy]
-     get 'member' => 'group_users#member' #グループメンバー一覧を
+     get 'member' => 'group_users#member' #グループメンバー一覧を取得
+     get 'group_chat' => 'chats#group'
   end
 
 end

@@ -19,12 +19,17 @@ class ChatsController < ApplicationController
       @chat = Chat.new(room_id: @room.id)
     end
 
+
+
     def create
       @chat = current_user.chats.new(chat_params)
       unless @chat.save
         redirect_to request.referer
       end
     end
+
+
+
 
   private
     def chat_params
@@ -37,6 +42,6 @@ class ChatsController < ApplicationController
         redirect_to user_path(user)
       end
     end
+
+
 end
-
-

@@ -1,7 +1,7 @@
 <div class="container mb-5">
   <div class="alert-warning mt-1 text-center"> <%= alert %> </div>　<%# 検索機能のエラー時flashメッセージを表示する　%>
     <div class="row mt-4">
-      <h2 class="title"><%= @group.name%>のグループページ</h2>
+      <h2 class="title"><%= @group.name%>のグループページ<%= link_to 'グループchatを始める', group_group_chat_path(@group), class: "ml-5 btn btn-info" %></h2>
     </div>
 
     <div class="row mt-3 profile ">
