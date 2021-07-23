@@ -46,6 +46,10 @@ class GroupsController < ApplicationController
        redirect_to groups_path
     end
 
+    def board
+      @group = Group.find(params[:group_id])
+      @group_board = GroupBoard.new
+    end
 
 private
 

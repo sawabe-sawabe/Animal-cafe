@@ -1,0 +1,19 @@
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
+    <div class="row mt-4">
+      <h2 class="title"><%= @group.name %>の伝言板</h2>
+    </div>
+
+
+   <div class="row mt-3 group_boards title">
+     <div class="mx-5 my-5 w-100 ">
+      <div id="group_board_<%= @group.id%>_message">
+       <%= render "group_boards/message", group: @group%>　<%#非同期通信化するため%>
+     </div>
+    <div class="new-comment ml-4">
+    <%= form_with(model:[@group,@group_board],remote: true) do |f| %>
+    <p class="input-group">
+    <%= f.text_area :message, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info"%>
+    <% end %>
+   </p>
+</div>

@@ -1,0 +1,31 @@
+<table class="mr-0 mb-5">
+  <thead class="mt-4">
+     <th> <h4 class="mt-2 ml-2"><i class="fas fa-comments ml-1 mr-2"></i>メッセージ</h4></th>
+  </thead>
+
+  <% group.group_boards.each do |message| %>
+  <tbody>
+     <tr class="mt-2">
+        <td>
+           <p class="ml-5"><%= message.created_at.strftime('%Y%m%d')%></p>
+        </td>
+        <td>
+           <p class="ml-5">
+             <%=link_to user_path(message.user.id) , class:"link" do %>
+             <%= attachment_image_tag message.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %>
+           </p>
+           <p class="ml-5"><%= message.user.name%><%end %></p>
+        </td>
+        <td>
+            <p class="ml-5"><%= message.message %></p>
+        </td>
+        <% if current_user == message.user %>
+        <td>
+            <p class="btn btn-secondary  ml-5 float-right"><%= link_to 'Destroy',  group_group_board_path(message.group_id, message.id),method: :delete ,remote: true ,class:"link"%></p>
+        </td>
+        <% end %>
+     </tr>
+  </tbody>
+  <% end %>
+ </table>
+

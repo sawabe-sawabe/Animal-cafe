@@ -1,30 +1,31 @@
 class GroupBoardsController < ApplicationController
   before_action :authenticate_user!
- def create
-   group = Group.find(params[:group_id])
-   message = current_user.message.new(message_params)
-   message.group_id = group.id
-   if group.save
-     redirect_to request.referer
-   else
-     render :show
+
+
+
+
+
+   def create
+     @group = Group.find(params[:group_id])
+     @group_board_message = current_user.group_boards.new(message_params)
+     @group_board_message.group_id = @group.id
+     @group_board_message.user_id = current_user.id
+     unless  @group_board_message.save #空白では投稿できないようにする
+       render :show
+     end
    end
- end
 
- def destroy
-   PostComment.find_by(id:params[:id],post_image_id:params[:post_image_id]).destroy
-   redirect_to request.referer
- end
+   def destroy
+     @group =Group.find(params[:group_id])
+     @group_board_message = @group.group_boards.find_by(user_id: current_user.id)
+     @group_board_message.destroy
+   end
 
- def index
-   @user = User.find(params[:user_id])
- end
 
-private
+ private
 
-def post_comment_params
-   params.require(:post_comment).permit(:comment)
-end
-end
+  def message_params
+    params.require(:group_board).permit(:message)
+  end
 
 end
