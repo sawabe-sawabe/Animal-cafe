@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :groups do
   resources:group_users, only:[:index]
+  resources:group_boards, only:[:create,:destroy]
    resource :group_users, only: [:create, :destroy]
   end
 
