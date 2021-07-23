@@ -4,12 +4,14 @@
   <div class="row mt-2">
    <h2 class="title"> "<%=params[:word]%>"の検索結果</h2>
   </div>
-  <div class="row mt-2 ml-3">
+
+   <div class="row mt-5">
    <% @post_image.each do |post_image| %>
-    <div class="card mr-5 mb-5">
+    <div>
+    <div class="card ml-5 mb-5">
       <div class="card-body p-2 "> <p class="card-text pl-3"><i class="fas fa-camera mr-2"></i><%= post_image.title %></p></div>
-      <p class="mx-3 mb-0"><%=link_to post_image_path(post_image.id) do %><%= attachment_image_tag post_image, :image,  size: "280x300" %><% end %></p> <%#refileを使用しているため%>
-      <table class="text-center">
+      <p class="mx-3 mb-0"><%=link_to post_image_path(post_image.id) do %><%= attachment_image_tag post_image, :image,  size: "280x340" %><% end %></p> <%#refileを使用しているため%>
+      <table class="text-center mt-3 mb-3">
        <tr>
          <td> <i class="fas fa-user"><%=link_to user_path(post_image.user.id) do %>
            <%= post_image.user.name%>
@@ -18,26 +20,23 @@
          <td><i class="fas fa-clock ml-1"></><%= post_image.created_at.strftime('%Y/%m/%d') %></td>
        </tr>
        <tr>
-         <td ><pclass="mt-2"><i class="fas fa-comments mr-1"></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %><p></td>
-
-         <td class=" favorite-btn"><p  class="mt-2"><%= render "favorites/favorite-btn", post_image: post_image %></p></td>　<%#非同期通信化するため%>
+         <td ><i class="fas fa-comments mr-1"></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></td>
+         <td id="post_image_<%= post_image.id %>"><%= render "favorites/favorite-btn", post_image: post_image  %></td> <%#非同期通信化するため%>
        </tr>
       </table>
     </div>
+   </div>
    <% end %>
-  </div>
- </div>
 
-
-<% else %>
-<div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
+<% elsif @range == '1'  %>
+<div class="container mb-5">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
     <div class="row mt-4">
-      <h2 class="title">"<%=params[:word]%>"の検索結果></h2>
+      <h2 class="title ">"<%=params[:word]%>"の検索結果</h2>
     </div>
-
-   <div class="row mt-3 profile title">
+    <div class="row mt-4 profile title">
      <div class="mx-5 my-5 w-100 ">
-      <%  @users.each do |user| %>
+      <%  @user.each do |user| %>
       <table class="mx-5 mb-4">
         <tr>
           <td>
@@ -66,5 +65,45 @@
     </tr>
   </table>
   <% end %>
+  </div>
+</div>
+<% else %>
+ <div class="container">
+  <div class="alert-warning mt-1 text-center"> <%= alert %> </div>
+  <div class="row mt-2">
+   <h2 class="title"> "<%=params[:word]%>"の検索結果</h2>
+  </div>
+  <div class="row mt-5">
+   <%  @group.each do |group| %>
+    <div>
+     <div class="card ml-5 mb-5">
+       <div class="card-body p-2 ">
+         <p class="card-text pl-3"><i class="fas fa-users mr-2"></i><%= group.name %></p>
+       </div>
+       <p class="mx-3 mb-0"><%=link_to group_path(group.id) do %><%= attachment_image_tag group, :profile_image,  size: "280x340" %><% end %></p> <%#refileを使用しているため%>
+       <table class=" mt-3 mb-3">
+         <tr class="ml-5">
+           <td>
+             <p class="ml-3"><i class="fas fa-comment-alt"></i><%= group.word%></p>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <i class="fas fa-user-circle mx-5 "><%= link_to "#{group.group_users.count} 人",  group_group_users_path(group.id), method: :get %></i>
+           </td>
+          <% if group.owner_id == current_user.id %>
+           <td><%=link_to "グループ編集",edit_group_path(group.id),class:  " btn btn-info link "%></td>
+          <% elsif group.joined_by?(current_user) %>
+           <td><%=link_to "退会する", group_group_users_path(group.id),method: :delete,class:"btn btn-dark link"%> </td>
+          <% else %>
+           <td><%= link_to "加入する", group_group_users_path(group.id),method: :post,method: :post,class:"btn btn-secondary link"%></td>
+           <% end %>
+         </tr>
+       </table>
+     </div>
+    </div>
+   <% end %>
+  </div>
  </div>
-<div>
+<% end %>
+

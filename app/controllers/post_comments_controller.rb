@@ -1,23 +1,25 @@
 class PostCommentsController < ApplicationController
  before_action :authenticate_user!
  def create
-   post_image = PostImage.find(params[:post_image_id])
-   comment = current_user.post_comments.new(post_comment_params)
-   comment.post_image_id = post_image.id
-   if comment.save
-     redirect_to request.referer
-   else
+   @post_image = PostImage.find(params[:post_image_id])
+   @post_comment = current_user.post_comments.new(post_comment_params)
+   @post_comment.post_image_id = @post_image.id
+   @post_comment.user_id = current_user.id
+   unless @post_comment.save #空白では投稿できないようにする
      render :show
    end
  end
 
  def destroy
-   PostComment.find_by(id:params[:id],post_image_id:params[:post_image_id]).destroy
-   redirect_to request.referer
+   @post_image =PostImage.find(params[:post_image_id])
+   @post_comment = @post_image.post_comments.find_by(user_id: current_user.id)
+   @post_comment.destroy
+
  end
 
  def index
    @user = User.find(params[:user_id])
+   
  end
 
 private
