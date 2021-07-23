@@ -9,3 +9,8 @@ ja:
        name: 入力された名前
      user:
        word: ひとこと
+     group:
+       name: グループ名
+       profile_image: グループイメージ
+       introduction: グループ紹介
+       word: ひとこと

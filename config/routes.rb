@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resource :group_users, only: [:create, :destroy]
+     get 'member' => 'group_users#member' #グループメンバー一覧を
   end
 
 end

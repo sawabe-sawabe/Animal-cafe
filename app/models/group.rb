@@ -3,6 +3,10 @@ class Group < ApplicationRecord
   has_many:users, through: :group_users,dependent: :destroy
   attachment :profile_image
 
+  validates :name, presence: true,uniqueness: true #同じ名前は使えないようにするため
+  validates :profile_image, presence: true
+  validates :introduction,presence: true
+  validates :word, length: { maximum: 30 }
 
   def joined_by?(user)
     group_users.where(user_id: user.id).exists? #グループにユーザーが加入しているかを確認

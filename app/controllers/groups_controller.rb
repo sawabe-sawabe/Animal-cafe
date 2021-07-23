@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
 
     def new
       @group = Group.new
@@ -8,8 +9,11 @@ class GroupsController < ApplicationController
       @group = Group.new(post_group_params)
       @group.owner_id = current_user.id
       @group.users << current_user
-      @group.save
-       redirect_to groups_path
+      if @group.save
+        redirect_to groups_path
+      else
+        render :new
+      end
     end
 
     def index
@@ -20,8 +24,7 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
       @users = User.where(id: @group.users.ids)
       @post_images = PostImage.where(user_id: @users.ids)
-
-   end
+    end
 
     def edit
       @group = Group.find(params[:id])
@@ -29,15 +32,20 @@ class GroupsController < ApplicationController
 
     def update
       @group = Group.find(params[:id])
-      @group.update(post_book_params)
+      if  @group.update(post_book_params)
+        redirect_to request.referer
+      else
+        render :edit
+      end
+
     end
 
     def  destroy
       @group = Group.find(params[:id])
       @group.destroy
-    redirect_to groups_path
+       redirect_to groups_path
     end
-  
+
 
 private
 
