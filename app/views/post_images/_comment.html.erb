@@ -1,31 +1,30 @@
-<table class="mr-0 mb-5">
-  <thead class="mt-4">
-     <th> <h4 class="mt-2 ml-2"><i class="fas fa-comments ml-1 mr-2"></i>コメント</h4></th>
-  </thead>
+<h4 class=" pl-3 pt-2"><i class="fas fa-comments ml-1 mr-2"></i>コメント</h4>
+<% @post_image.post_comments.each do |post_comment| %>
+  <table class="my-2 ">
+    <tr>
+      <td><p class="ml-5 mb-2"><%= post_comment.created_at.strftime('%Y/%m/%d')%></p>
+      <td class="ml-3">
+        <p class="ml-3 pt-3">
+          <%=link_to user_path(post_image.user.id) , class:"link" do %>
+          <%= attachment_image_tag post_comment.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= post_comment.user.name%><%end %>
+        </p>
+       </td>
+           </td>
+           <td class="text-break ">
+            <p class="ml-3 "><%= post_comment.comment %></p>
+           </td>
+          <% if current_user == post_comment.user %>
+           <td>
+            <p class="btn btn-secondary mx-5 float-right"><%= link_to 'Destroy', post_image_post_comment_path(post_comment.post_image_id, post_comment.id),method: :delete ,remote: true ,class:"link"%></p>
+           </td>
+          <% end %>
+      </tr>
+  </table>
 
-  <% @post_image.post_comments.each do |post_comment| %>
-  <tbody>
-     <tr class="mt-2">
-        <td>
-           <p class="ml-5"><%= post_comment.created_at.strftime('%Y%m%d')%></p>
-        </td>
-        <td>
-           <p class="ml-5">
-             <%=link_to user_path(post_image.user.id) , class:"link" do %>
-             <%= attachment_image_tag post_comment.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %>
-           </p>
-           <p class="ml-5"><%= post_comment.user.name%><%end %></p>
-        </td>
-        <td>
-            <p class="ml-5"><%= post_comment.comment %></p>
-        </td>
-        <% if current_user == post_comment.user %>
-        <td>
-            <p class="btn btn-secondary  ml-5 float-right"><%= link_to 'Destroy', post_image_post_comment_path(post_comment.post_image_id, post_comment.id),method: :delete ,remote: true ,class:"link"%></p>
-        </td>
-        <% end %>
-     </tr>
-  </tbody>
+
+
+
   <% end %>
- </table>
+
 

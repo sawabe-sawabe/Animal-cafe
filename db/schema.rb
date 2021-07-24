@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2021_07_21_055600) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_boards", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "group_users", force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
