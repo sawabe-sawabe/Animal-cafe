@@ -12,14 +12,14 @@ class PostCommentsController < ApplicationController
 
  def destroy
    @post_image =PostImage.find(params[:post_image_id])
-   @post_comment = @post_image.post_comments.find_by(user_id: current_user.id)
+   @post_comment = @post_image.post_comments.find(params[:id])
    @post_comment.destroy
 
  end
 
  def index
    @user = User.find(params[:user_id])
-   
+
  end
 
 private

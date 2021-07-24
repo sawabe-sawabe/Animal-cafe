@@ -17,7 +17,7 @@ class GroupBoardsController < ApplicationController
 
    def destroy
      @group =Group.find(params[:group_id])
-     @group_board_message = @group.group_boards.find_by(user_id: current_user.id)
+     @group_board_message = @group.group_boards.find(params[:id])
      @group_board_message.destroy
    end
 

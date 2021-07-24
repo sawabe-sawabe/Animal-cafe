@@ -75,7 +75,7 @@ body{
   margin-top: 150px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-header ,footer,.profile{
+header ,footer,.profile,{
    background-color: rgba(0, 0, 0, 0.5);
 }
 ul {
@@ -121,4 +121,8 @@ footer {
 }
 .title, .time{
   color: white;
+}
+
+.group_boards{
+   background-image: image-url("4454473_s");
 }
