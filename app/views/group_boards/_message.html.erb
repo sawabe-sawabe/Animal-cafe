@@ -1,20 +1,19 @@
 <% group.group_boards.order('created_at DESC') .each do |message| %>
-   <table class="mt-4 ">
+   <table class="mt-md-4 ">
     <tr>
-      <td><p class="ml-5 mb-2"><%= message.created_at.strftime('%Y/%m/%d  %H:%M')%></p>
-      <td class="mx-3">
-        <h5 class=" ml-3 ">
+      <td><p class="ml-md-5 mb-2 w-100"><%= message.created_at.strftime('%Y/%m/%d  %H:%M')%></p>
+      <h5 class=" ml-md-5 ">
           <%=link_to user_path(message.user.id) , class:"link" do %>
-          <p class=" pl-2"> <%= attachment_image_tag message.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %></p>
+          <p class=" pl-md-2"> <%= attachment_image_tag message.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %></p>
           <p> <%= message.user.name%><%end %></p>
         </h5>
        </td>
-       <td class="text-break w-75 ">
-         <h4 class="mx-5 "><%= message.message %></h4>
+       <td class="text-break w-100 ">
+         <h5 class="mx-md-5 "><%= message.message %></h5>
        </td>
       <% if current_user == message.user %>
        <td>
-        <p class="btn btn-secondary mx-5 float-right"><%= link_to 'Destroy', group_group_board_path(message.group_id, message.id),method: :delete ,remote: true ,class:"link"%></p>
+        <p class="btn btn-secondary mx-md-5 float-right"><%= link_to 'Destroy', group_group_board_path(message.group_id, message.id),method: :delete ,remote: true ,class:"link"%></p>
        </td>
         <% end %>
       </tr>

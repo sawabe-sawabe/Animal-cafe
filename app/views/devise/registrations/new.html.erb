@@ -1,26 +1,26 @@
-<div class = "container">
+<div class = "container mb-5">
    <div class = "Inup">
      <div class = "row">
        <h2 class='mt-4 mx-auto'>新規会員登録</h2>
    </div>
     <div class='row text-center'>
-      <div class="col-6 mx-auto">
+      <div class="col-md-6 mx-auto">
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
         <div class="form-group mt-4">
-           <div class="col-7 mx-auto" ><%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "名前（2文字以上20文字以内）" %></div>
+           <div class="col-md-7 mx-auto" ><%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "名前（2文字以上20文字以内）" %></div>
        </div>
        <div class="form-group mt-4">
-        <div class="col-7 mx-auto" ><%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "form-control",placeholder: "メールアドレス" %></div>
+        <div class="col-md-7 mx-auto" ><%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "form-control",placeholder: "メールアドレス" %></div>
        </div>
    <div class="form-group mt-4">
      <% if @minimum_password_length %>
-     <div class="col-7 mx-auto"><%= f.password_field :password, autocomplete: "new-password",class: "form-control",placeholder: "パスワード#{@minimum_password_length} 文字以上"%></div>
+     <div class="col-md-7 mx-auto"><%= f.password_field :password, autocomplete: "new-password",class: "form-control",placeholder: "パスワード#{@minimum_password_length} 文字以上"%></div>
    <% end %>
   </div>
 
   <div class="form-group mt-4">
-   <div class="col-7 mx-auto"> <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control",placeholder: "パスワード確認" %></div>
+   <div class="col-md-7 mx-auto"> <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control",placeholder: "パスワード確認" %></div>
   </div>
 
   <div class="actions mt-4">

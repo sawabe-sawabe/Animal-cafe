@@ -1,18 +1,18 @@
 <div class="container mb-5">
  <div class="alert-warning mt-1 text-center"> <%= alert %> </div> <%# 検索機能のエラー時flashメッセージを表示する %>
    <div class="row my-3">
-     <h4 class=" post_image"><i class="fas fa-camera mr-2"></i><%= @post_image.title %></h4>
+     <h4 class=" post_image "><i class="fas fa-camera mr-2"></i><%= @post_image.title %></h4>
    </div>
 
    <div class="row post_image">
 
-   <div class="col-6 ">
+   <div class="col-md-6 ">
 
-     <p class="card mt-1 ml-5">
-       <%= attachment_image_tag @post_image, :image,  size: "450x540" ,class:"card-img p-3"%><%#refileを使用しているため%>
+     <p class="card mt-1 ml-md-5">
+       <%= attachment_image_tag @post_image, :image,  size: "450x540" ,class:"card-img p-md-3"%><%#refileを使用しているため%>
      </p>
      </div>
-     <div class ="col-6 text-center mt-5 ">
+     <div class ="col-md-6 text-center mt-5 ">
        <h4>
           <i class="fas fa-comment-dots mr-2"></i><%= @post_image.caption %>
        </h4>
@@ -47,13 +47,13 @@
        </table>
      <% end %>
     </div>
- 
 
-  <div class="comments ml-4 my-3 w-100 mb-5">
+
+  <div class="comments ml-md-4 my-3 w-100 mb-5">
     <div id="post_image_<%= @post_image.id%>_comment">
      <%= render "post_images/comment", post_image: @post_image,post_image: @post_image %>　<%#非同期通信化するため%>
     </div>
-    <div class="new-comment ml-4">
+    <div class="new-comment ml-md-4">
      <%= form_with(model:[@post_image,@post_comment],remote: true) do |f| %>
      <p class="input-group">
      <%= f.text_area :comment, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info"%>

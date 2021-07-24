@@ -23,9 +23,9 @@ class ChatsController < ApplicationController
 
     def create
       @chat = current_user.chats.new(chat_params)
-      unless @chat.save
-        redirect_to request.referer
-      end
+      @chat.save
+      redirect_to request.referer
+
     end
 
 

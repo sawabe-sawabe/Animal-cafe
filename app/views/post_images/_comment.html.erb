@@ -1,10 +1,10 @@
-<h4 class=" pl-3 pt-2"><i class="fas fa-comments ml-1 mr-2"></i>コメント</h4>
+<h4 class=" pl-md-3 pt-2"><i class="fas fa-comments ml-1 mr-2"></i>コメント</h4>
 <% @post_image.post_comments.each do |post_comment| %>
   <table class="my-2 ">
     <tr>
-      <td><p class="ml-5 mb-2"><%= post_comment.created_at.strftime('%Y/%m/%d')%></p>
-      <td class="ml-3">
-        <p class="ml-3 pt-3">
+      <td><p class="ml-md-5 mb-2"><%= post_comment.created_at.strftime('%Y/%m/%d')%></p>
+      <td class="ml-md-3">
+        <p class="ml-md-3 pt-3">
           <%=link_to user_path(post_image.user.id) , class:"link" do %>
           <%= attachment_image_tag post_comment.user,:profile_image, format: 'image', size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %>
           <%= post_comment.user.name%><%end %>
@@ -12,7 +12,7 @@
        </td>
            </td>
            <td class="text-break ">
-            <p class="ml-3 "><%= post_comment.comment %></p>
+            <p class="ml-md-3 "><%= post_comment.comment %></p>
            </td>
           <% if current_user == post_comment.user %>
            <td>

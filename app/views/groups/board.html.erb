@@ -5,15 +5,15 @@
     </div>
 
 
-   <div class="row mt-3 group_boards img-thumbnail title">
-     <div class="mx-5 my-5 w-100 ">
+   <div class="row mt-3 ml-2 group_boards img-thumbnail title ">
+     <div class="mx-md-5 my-5 w-100 ">
       <div id="group_board_<%= @group.id%>_message">
        <%= render "group_boards/message", group: @group%> <%#非同期通信化するため%>
      </div>
-    <div class="new-comment ml-4">
+    <div class="new-comment ml-md-4">
     <%= form_with(model:[@group,@group_board],remote: true) do |f| %>
-    <p class="input-group">
-    <%= f.text_area :message, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info"%>
+    <p class="input-group w-100">
+    <%= f.text_area :message, rows:'1', placeholder:"コメントをここに" ,class: "form-control  mr-0 d-block  ",size: "120x1" %> <%= f.submit"送信",class: " submit btn btn-info "%>
     <% end %>
    </p>
 </div>

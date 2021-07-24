@@ -14,7 +14,11 @@
  *= require_self
  */
 @import "bootstrap";
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body{
   background-image: image-url("cafe201261763_TP_V.jpeg");
@@ -126,3 +130,5 @@ footer {
 .group_boards{
    background-image: image-url("4454473_s");
 }
+
+

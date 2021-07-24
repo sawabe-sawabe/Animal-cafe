@@ -5,24 +5,24 @@
        <h2 class= 'mt-5 mx-auto'>新規投稿</h2>
     </div>
    <div class="row ">
-    <div class="col-6 mx-auto">
+    <div class="col-md-6 mx-auto">
      <%= form_with model:@post_image,local:true do |f| %>
       <%= render 'layouts/errors', obj: @post_image  %>
        <div>
          <h4><i class="fas fa-camera mr-2"></i>写真 </h4>
-          <h4 class="ml-5"><%= f.attachment_field :image %></h4>
+          <h4 class="ml-md-5"><%= f.attachment_field :image ,class:"w-100"%></h4>
        </div>
        <div class="mt-2">
          <h4><i class="fas fa-paw mr-2"></i>ジャンル</h4>
-         <h4 class="ml-5"><%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"})  %></h4>
+         <h4 class="ml-md-5"><%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"})  %></h4>
        </div>
        <div>
          <h4><i class="fas fa-camera mr-2"></i>タイトル</h4>
-         <h4 class="ml-5"><%= f.text_field :title, size: 40 %></h4>
+         <h4 class="ml-md-5"><%= f.text_field :title, size: 40 ,class:"w-100"%></h4>
        </div>
        <div>
          <h4><i class="fas fa-comment-dots mr-2"></i>写真説明</h4>
-         <h4 class="ml-5"> <%= f.text_area :caption, size: "40x5" %></h4>
+         <h4 class="ml-md-5"> <%= f.text_area :caption, size: "40x5",class:"w-100" %></h4>
        </div>
        <div>
          <h5 class="text-center"><%= f.submit "投稿" , class: 'btn btn-info'  %></h5>

@@ -5,28 +5,28 @@
        <h2 class= 'mt-5 mx-auto'>プロフィール編集</h2>
     </div>
    <div class="row ">
-    <div class="col-6 mx-auto">
+    <div class="col-md-6 mx-auto ">
      <%= form_with model:@user,local:true do |f| %>
        <%= render 'layouts/errors', obj: @user  %> <%# ひとことが制限字数を超えたらエラーを表示 %>
-       <div class="mt-4">
-         <h4><i class="fas fa-camera mr-2"></i>プロフィール画像 </h4>
-          <h4 class="ml-5"><%= f.attachment_field :profile_image %></h4>
+       <div class="mt-4 ">
+         <h4><i class="fas fa-camera mr-md-2"></i>プロフィール画像 </h4>
+          <h4 class="ml-md-5 "><%= f.attachment_field :profile_image,class:"w-100" %></h4>
        </div>
        <div class="mt-2">
-         <h4><i class="fas fa-dog mr-2"></i>飼っている動物</h4>
-         <h4 class="ml-5"><%= f.text_field :having_pets, size: 40 %></h4>
+         <h4><i class="fas fa-dog mr-md-2"></i>飼っている動物</h4>
+         <h4 class="ml-md-5"><%= f.text_field :having_pets, size: 40 ,class:"w-100"%></h4>
        </div>
        <div>
-         <h4><i class="fas fa-cat mr-2"></i>好きな動物</h4>
-         <h4 class="ml-5"><%= f.text_field :favorite_animal, size: 40 %></h4>
+         <h4><i class="fas fa-cat mr-md-2"></i>好きな動物</h4>
+         <h4 class="ml-md-5"><%= f.text_field :favorite_animal, size: 40,class:"w-100"%></h4>
        </div>
        <div>
          <h4><i class="fas fa-comment-alt mr-2"></i>ひとこと</h4>
-         <h4 class="ml-5"> <%= f.text_field :word, size:40 ,placeholder: "30文字以内"   %></h4>
+         <h4 class="ml-md-5"> <%= f.text_field :word, size:40 ,placeholder: "30文字以内" ,class:"w-100"  %></h4>
        </div>
        <div>
          <h4><i class="fas fa-comment-dots"></i>自己紹介</h4>
-         <h4 class="ml-5"> <%= f.text_area :introduction, size: "40x5" %></h4>
+         <h4 class="ml-md-5"> <%= f.text_area :introduction, size: "40x5",class:"w-100" %></h4>
        </div>
        <div>
          <h5 class="text-center"><%= f.submit "更新" , class: 'btn btn-info'  %></h5>
