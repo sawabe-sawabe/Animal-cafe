@@ -1,18 +1,16 @@
 class GroupBoardsController < ApplicationController
   before_action :authenticate_user!
 
-
-
-
-
    def create
      @group = Group.find(params[:group_id])
      @group_board_message = current_user.group_boards.new(message_params)
      @group_board_message.group_id = @group.id
      @group_board_message.user_id = current_user.id
+
      unless  @group_board_message.save #空白では投稿できないようにする
        render :show
      end
+
    end
 
    def destroy

@@ -7,7 +7,7 @@
 
    <div class="row mt-3 group_boards img-thumbnail title">
      <div class="mx-5 my-5 w-100 ">
-      <div id="group_board_<%= @id%>_message">
+      <div id="group_board_<%= @group.id%>_message">
        <%= render "group_boards/message", group: @group%> <%#非同期通信化するため%>
      </div>
     <div class="new-comment ml-4">

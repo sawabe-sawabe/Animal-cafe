@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
     def show
       @group = Group.find(params[:id])
       @users = User.where(id: @group.users.ids)
-      @post_images = PostImage.where(user_id: @users.ids)
+      @post_images = PostImage.where(user_id: @users.ids).order('created_at DESC') #新規投稿順になるように並び替え
     end
 
     def edit
@@ -57,9 +57,5 @@ private
  def post_group_params
     params.require(:group).permit(:name, :profile_image, :introduction,:word,:owner_id)
  end
-
-
-
-
 
 end
