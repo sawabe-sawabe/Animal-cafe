@@ -3,7 +3,7 @@
   <div class="row mt-4">
      <h2 class="title"><%= @user.name%>さんのコメントした投稿履歴</h2>
   </div>
-  <div class="row mt-4 ml-md-2">
+  <div class="row mt-4  mx-auto">
 
    <% @user.post_comments_images.order('post_comments.created_at DESC').each do |post_image| %> <%#最近コメントした投稿が最初に来るようにする%>
  <div>
