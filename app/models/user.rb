@@ -4,11 +4,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :favorites, dependent: :destroy
-   # 中間テーブルのfavoritesを通り、PostImageモデルのfavoritesインスタンスを取得するため
+  # 中間テーブルのfavoritesを通り、PostImageモデルのfavoritesインスタンスを取得するため
   has_many :favorites_images, through: :favorites, source: :post_image
 
   has_many :post_comments, dependent: :destroy
-    # 中間テーブルのpost_commentsを通り、PostImageモデルのpost_commentsインスタンスを取得するため
+  # 中間テーブルのpost_commentsを通り、PostImageモデルのpost_commentsインスタンスを取得するため
   has_many :post_comments_images, through: :post_comments, source: :post_image
 
   # フォロー取得
