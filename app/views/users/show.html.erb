@@ -86,7 +86,7 @@
                </tr>
                <tr>
                   <td>
-                    <i class="fas fa-comments mr-1"></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
+                    <i class="fas fa-comments mr-1" ></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
                   </td>
                   <td id="post_image_<%= post_image.id %>">
                     <%= render "favorites/favorite-btn", post_image: post_image %>　<%#非同期通信化するため%>

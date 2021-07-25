@@ -24,18 +24,15 @@
            <i class="fas fa-user mr-1"></i><%= @post_image.user.name %>
           <%end%>
        </h4>
-
         <h4 id="post_image_<%= @post_image.id %>" >
          <%= render "favorites/favorite-btn", post_image: @post_image %> <%#非同期通信化するため%>
         </h4>
-
-
-       <h5 class=" mt-4">
+        <h5 class=" mt-4">
          コメント件数<i class="fas fa-comments ml-2"><%= @post_image.post_comments.count%></i>
-       </h5>
-       <h5 class=" mt-5">
-         投稿日時 <i class="fas fa-clock ml-1"><%= @post_image.created_at.strftime('%Y/%m/%d') %></i>
-       </h5>
+        </h5>
+        <h5 class=" mt-5">
+          投稿日時 <i class="fas fa-clock ml-1"><%= @post_image.created_at.strftime('%Y/%m/%d') %></i>
+        </h5>
      <% if @post_image.user == current_user %>
        <table class="mx-auto mt-5" >
         <td>
