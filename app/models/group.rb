@@ -6,7 +6,6 @@ class Group < ApplicationRecord
   attachment :profile_image
 
   validates :name, presence: true, uniqueness: true # 同じ名前は使えないようにするため
-  validates :profile_image, presence: true
   validates :introduction, presence: true
   validates :word, length: { maximum: 30 }
 
