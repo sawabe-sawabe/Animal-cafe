@@ -32,8 +32,8 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    if @group.update(post_book_params)
-      redirect_to request.referer
+    if @group.update(post_group_params)
+      redirect_to group_path(@group.id)
     else
       render :edit
     end
