@@ -4,7 +4,6 @@ class GroupUsersController < ApplicationController
   end
 
   def member
-    @users = User.where(params[:group_id])
     @group = Group.find(params[:group_id])
   end
 
