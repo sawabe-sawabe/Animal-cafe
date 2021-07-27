@@ -36,7 +36,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     context 'wordカラム' do
       it '30文字以下であること: 30文字は〇' do
-        user.word= Faker::Lorem.characters(number: 30)
+        user.word = Faker::Lorem.characters(number: 30)
         is_expected.to eq true
       end
       it '30文字以下であること: 31文字は×' do
@@ -52,11 +52,11 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:post_images).macro).to eq :has_many
       end
     end
+
     context 'group_userモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:group_users).macro).to eq :has_many
       end
     end
-
   end
 end

@@ -8,14 +8,13 @@ RSpec.describe 'Groupモデルのテスト', type: :model do
     let!(:user) { build_stubbed(:user, :user_with_groups) }
     let(:group) { build_stubbed(:group) }
 
-
-
     context 'introductionカラム' do
       it '空欄でないこと' do
         group.introduction = ''
         is_expected.to eq false
       end
     end
+
     context 'nameカラム' do
       it '空欄でないこと' do
         group.name = ''
@@ -26,7 +25,8 @@ RSpec.describe 'Groupモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-     context 'wordカラム' do
+
+    context 'wordカラム' do
       it '30文字以下であること: 30文字は〇' do
         group.word = Faker::Lorem.characters(number: 30)
         is_expected.to eq true
@@ -44,11 +44,11 @@ RSpec.describe 'Groupモデルのテスト', type: :model do
         expect(Group.reflect_on_association(:users).macro).to eq :has_many
       end
     end
-   context 'group_usersモデルとの関係' do
+
+    context 'group_usersモデルとの関係' do
       it '1:Nとなっている' do
         expect(Group.reflect_on_association(:group_users).macro).to eq :has_many
       end
     end
-
   end
 end

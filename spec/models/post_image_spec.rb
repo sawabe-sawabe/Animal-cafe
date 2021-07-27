@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'PostImageモデルのテスト', type: :model do
-
   describe 'バリデーションのテスト' do
     subject { post_image.valid? }
 
     let!(:user) { create(:user) }
     let!(:genre) { create(:genre) }
-    let!(:post_image) { build(:post_image, user_id: user.id,genre_id: genre.id) }
+    let!(:post_image) { build(:post_image, user_id: user.id, genre_id: genre.id) }
 
     context 'titleカラム' do
       it '空欄でないこと' do
@@ -22,7 +21,7 @@ RSpec.describe 'PostImageモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
- end
+  end
 
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do

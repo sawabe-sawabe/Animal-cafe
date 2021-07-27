@@ -4,7 +4,7 @@ RSpec.describe 'Genreモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { genre.valid? }
 
-    let!(:other_genre) { create(:genre)}
+    let!(:other_genre) { create(:genre) }
     let(:genre) { build(:genre) }
 
     context 'nameカラム' do
@@ -13,7 +13,7 @@ RSpec.describe 'Genreモデルのテスト', type: :model do
         is_expected.to eq false
       end
       it '一意性があること' do
-        genre.name= other_genre.name
+        genre.name = other_genre.name
         is_expected.to eq false
       end
 
@@ -27,7 +27,6 @@ RSpec.describe 'Genreモデルのテスト', type: :model do
       end
     end
   end
-
 
   describe 'アソシエーションのテスト' do
     context 'post_imageモデルとの関係' do
