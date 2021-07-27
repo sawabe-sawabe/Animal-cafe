@@ -22,7 +22,7 @@
          </tr>
          <tr>
            <td>
-             <i class="fas fa-user-circle mx-5 "><%= link_to "#{group.group_users.count} 人",  group_group_users_path(group.id), method: :get %></i>
+             <i class="fas fa-user-circle mx-5 "><%= link_to "#{group.group_users.count} 人",   group_member_path(group.id), method: :get %></i>
            </td>
           <% if group.owner_id == current_user.id %>
            <td><%=link_to "グループ編集",edit_group_path(group.id),class:  " btn btn-info link "%></td>
