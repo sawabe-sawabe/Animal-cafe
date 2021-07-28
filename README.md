@@ -1,3 +1,4 @@
+<img width="1433" alt="スクリーンショット 2021-07-28 13 18 35" src="https://user-images.githubusercontent.com/81796122/127263040-98cdbcf6-c7fb-47ce-a8a6-d45f053a63e3.png">
 # Animal cafe
 
 ## サイト概要
