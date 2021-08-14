@@ -22,6 +22,7 @@ class PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
+    @image_url = "https://animal-cafe-resize.s3-ap-northeast-1.amazonaws.com/store/" + @post_image.image_id + "-thumbnail."
   end
 
   def edit
