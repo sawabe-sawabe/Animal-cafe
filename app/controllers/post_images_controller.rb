@@ -59,6 +59,7 @@ class PostImagesController < ApplicationController
 end
 
 def baria_user
+    @post_image = PostImag.find(params[:id])
     unless @post_image.user.id == current_user.id
         redirect_to post_image_path(@post_image.id)
     end
