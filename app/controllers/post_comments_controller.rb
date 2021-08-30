@@ -1,6 +1,6 @@
 class PostCommentsController < ApplicationController
   before_action :authenticate_user!
-
+　before_action :baria_user, only: [:destroy]
   def create
     @post_image = PostImage.find(params[:post_image_id])
     @post_comment = current_user.post_comments.new(post_comment_params)
@@ -27,4 +27,10 @@ class PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
+end
+
+def baria_user
+    unless @group.group_boards.find(params[:id]) == current_user.id
+        redirect_to tasks_path(current_user)
+    end
 end

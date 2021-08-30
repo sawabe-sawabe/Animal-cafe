@@ -1,5 +1,6 @@
 class PostImagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :baria_user, only: [:destroy]
   def index
     @post_images = PostImage.all.order('created_at DESC') # 新規投稿順になるように並び替え
     @genres = Genre.all
@@ -54,4 +55,10 @@ class PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:title, :genre_id, :image, :caption)
   end
+end
+
+def baria_user
+    unless @group.group_boards.find(params[:id]) == current_user.id
+        redirect_to tasks_path(current_user)
+    end
 end

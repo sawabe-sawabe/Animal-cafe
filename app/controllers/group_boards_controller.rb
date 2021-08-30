@@ -1,5 +1,6 @@
 class GroupBoardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :baria_user, only: [:destroy]
 
   def create
     @group = Group.find(params[:group_id])
@@ -24,3 +25,10 @@ class GroupBoardsController < ApplicationController
     params.require(:group_board).permit(:message)
   end
 end
+
+ def baria_user
+    unless @group.group_boards.find(params[:id]) == current_user.id
+        redirect_to tasks_path(current_user)
+    end
+ end
+
