@@ -1,6 +1,7 @@
 class PostCommentsController < ApplicationController
   before_action :authenticate_user!
-　before_action :baria_user, only: [:destroy]
+  before_action :baria_user, only: [:destroy]
+
   def create
     @post_image = PostImage.find(params[:post_image_id])
     @post_comment = current_user.post_comments.new(post_comment_params)

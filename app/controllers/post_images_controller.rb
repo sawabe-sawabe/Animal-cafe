@@ -1,6 +1,7 @@
 class PostImagesController < ApplicationController
   before_action :authenticate_user!
   before_action :baria_user, only: [:destroy]
+
   def index
     @post_images = PostImage.all.order('created_at DESC') # 新規投稿順になるように並び替え
     @genres = Genre.all
