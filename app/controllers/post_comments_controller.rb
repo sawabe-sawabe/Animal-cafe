@@ -31,7 +31,7 @@ class PostCommentsController < ApplicationController
 end
 
 def baria_user
-    unless @group.group_boards.find(params[:id]) == current_user.id
+    unless @post_comment.find(params[:user_id]) == current_user.id
         redirect_to tasks_path(current_user)
     end
 end
