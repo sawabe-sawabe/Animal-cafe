@@ -59,7 +59,7 @@ class PostImagesController < ApplicationController
 end
 
 def baria_user
-    unless @post_image.find(params[:user_id]) == current_user.id
-        redirect_to tasks_path(current_user)
+    unless @post_image.user.id == current_user.id
+        redirect_to post_image_path(@post_image.id)
     end
 end
