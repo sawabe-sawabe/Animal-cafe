@@ -31,7 +31,9 @@ class PostCommentsController < ApplicationController
 end
 
 def baria_user
-    unless @post_comment.find(params[:user_id]) == current_user.id
-        redirect_to tasks_path(current_user)
+    @post_image = PostImage.find(params[:post_image_id])
+    @post_comment = @post_image.post_comments.find(params[:id])
+    unless @post_comment.user_id == current_user.id
+         redirect_to post_image_path(@post_image.id)
     end
 end

@@ -27,8 +27,10 @@ class GroupBoardsController < ApplicationController
 end
 
  def baria_user
-    unless @group.group_boards.find(params[:id]) == current_user.id
-        redirect_to tasks_path(current_user)
+    @group = Group.find(params[:group_id])
+    @group_board_message = @group.group_boards.find(params[:id])
+    unless @group_board_message.user_id = current_user.id
+      redirect_to request.referer
     end
  end
 
